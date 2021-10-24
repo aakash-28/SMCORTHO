@@ -33,7 +33,6 @@ const PageVectorMaps = () => {
   return (
     <>
       <div className='full-height-page p-4'>
-        <VectorMap style={{ maxHeight: '100%' }} {...world} />
       </div>
     </>
   );
