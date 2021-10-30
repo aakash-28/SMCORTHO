@@ -38,7 +38,7 @@ const App = () => {
   return (
     <Switch>
       <Route path='/' exact>
-        <Redirect to='/new/default-dashboard' />
+        <Redirect to='/vertical/default-dashboard' />
       </Route>
 
       <Route path='/public'>
@@ -52,12 +52,6 @@ const App = () => {
       </Route>
 
       <Route path='/vertical'>
-        <VerticalLayout>
-          <DefaultRoutes layout='vertical' />
-        </VerticalLayout>
-      </Route>
-
-      <Route path='/new'>
         <VerticalLayout>
           <DefaultRoutes layout='vertical' />
         </VerticalLayout>
