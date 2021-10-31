@@ -7,7 +7,7 @@ import BaseLayout from '../base/BaseLayout';
 
 import Logo from '../components/logo/Logo';
 import Navbar from '../components/navbar/Navbar';
-import LogoSvg from './../../assets/img/logo.svg';
+import LogoSvg from './../../assets/img/logo.png';
 
 import Menu from '../components/menu/Menu';
 import Search from '../components/search/Search';

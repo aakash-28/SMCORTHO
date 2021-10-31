@@ -53,7 +53,7 @@ const DashboardPage = () => {
               <div className='col-7'>
                 <h6 className='mt-0 mb-1'>Appointments</h6>
                 <div className='count' style={{ fontSize: 20, color: '#336cfb', lineHeight: 1.4 }}>
-                  213
+                  23
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@ const DashboardPage = () => {
               <div className='col-7'>
                 <h6 className='mt-0 mb-1'>New patients</h6>
                 <div className='count' style={{ fontSize: 20, color: '#336cfb', lineHeight: 1.4 }}>
-                  213
+                  09
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@ const DashboardPage = () => {
               <div className='col-7'>
                 <h6 className='mt-0 mb-1'>Operations</h6>
                 <div className='count' style={{ fontSize: 20, color: '#336cfb', lineHeight: 1.4 }}>
-                  23
+                  05
                 </div>
               </div>
             </div>
@@ -113,7 +113,7 @@ const DashboardPage = () => {
               <div className='col-7'>
                 <h6 className='mt-0 mb-1'>Earnings</h6>
                 <div className='count' style={{ fontSize: 20, color: '#336cfb', lineHeight: 1.4 }}>
-                  $5238
+                  Rs.5238
                 </div>
               </div>
             </div>
