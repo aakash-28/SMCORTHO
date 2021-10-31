@@ -33,7 +33,6 @@ const PageVectorMaps = () => {
   return (
     <>
       <div className='full-height-page p-4'>
-        
       </div>
     </>
   );

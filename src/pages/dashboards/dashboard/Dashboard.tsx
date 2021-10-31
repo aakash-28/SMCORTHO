@@ -128,7 +128,7 @@ const DashboardPage = () => {
       <div className='row'>
         <div className='col-sm-12 col-md-6'>
           <Card>
-            <h4 className='mt-0 mb-1'>$25038</h4>
+            <h4 className='mt-0 mb-1'>Rs.25038</h4>
             <p className='mb-0' style={{ color: '#9d9d9d' }}>
               Income in current month
             </p>
@@ -139,7 +139,7 @@ const DashboardPage = () => {
 
         <div className='col-sm-12 col-md-6'>
           <Card>
-            <h4 className='mt-0 mb-1'>$2195</h4>
+            <h4 className='mt-0 mb-1'>Rs.20195</h4>
             <p className='mb-0' style={{ color: '#9d9d9d' }}>
               Income in current week
             </p>

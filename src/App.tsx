@@ -10,6 +10,8 @@ import { defaultRoutes, sessionRoutes } from './routing';
 
 import './App.scss';
 import { useHideLoader } from './hooks/useHideLoader';
+import SMCLayout from './layout/components/smcLayout/SMCLayout';
+import { smcRoutes } from './routing/smc-routes';
 
 const Routes = ({ routes, layout = '' }) => (
   <Switch>
@@ -18,6 +20,23 @@ const Routes = ({ routes, layout = '' }) => (
         key={index}
         exact={route.exact}
         path={layout.length > 0 ? `/${layout}/${route.path}` : `/${route.path}\``}
+        component={() => <route.component />}
+      />
+    ))}
+
+    <Route path='*'>
+      <Redirect to='/public/page-404' />
+    </Route>
+  </Switch>
+);
+
+const SMCRoutes = () => (
+  <Switch>
+    {smcRoutes.map((route, index) => (
+      <Route
+        key={index}
+        exact={false}
+        path={`/smc/${route.path}`}
         component={() => <route.component />}
       />
     ))}
@@ -37,7 +56,7 @@ const App = () => {
 
   return (
     <Switch>
-      <Route path='/' exact>
+      <Route exact path='/'>
         <Redirect to='/vertical/default-dashboard' />
       </Route>
 
@@ -55,6 +74,12 @@ const App = () => {
         <VerticalLayout>
           <DefaultRoutes layout='vertical' />
         </VerticalLayout>
+      </Route>
+
+      <Route path='/smc'>
+        <SMCLayout>
+          <SMCRoutes />
+        </SMCLayout>
       </Route>
 
       <Route path='*'>
