@@ -5,6 +5,8 @@ import { Avatar, Table } from 'antd';
 import { ColumnProps } from 'antd/es/table';
 import { IAppointment } from '../../../interfaces/patient';
 
+import { history } from '../../../redux/store';
+
 const AppointmentImg = ({ img }) => {
   const isData = img.startsWith('data:image');
   const isWithPath = img.startsWith('http');
@@ -16,19 +18,21 @@ const AppointmentImg = ({ img }) => {
   return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
 };
 
+const handleShowInfo = () => history.push('/vertical/patient-profile');
+
 const columns: ColumnProps<IAppointment>[] = [
-  {
-    key: 'img',
-    title: 'Photo',
-    dataIndex: 'img',
-    render: (img) => <AppointmentImg img={img} />
-  },
+  // {
+  //   key: 'img',
+  //   title: 'Photo',
+  //   dataIndex: 'img',
+  //   render: (img) => <AppointmentImg img={img} />
+  // },
   {
     key: 'name',
     dataIndex: 'name',
     title: 'Name',
     sorter: (a, b) => (a.name > b.name ? 1 : -1),
-    render: (name) => <strong>{name}</strong>
+    render: (name) => <strong onClick={handleShowInfo} style={{cursor:'pointer'}}>{name}</strong>
   },
   {
     key: 'email',
@@ -72,7 +76,7 @@ const columns: ColumnProps<IAppointment>[] = [
       </span>
     )
   },
-  { key: 'doctor', title: 'Doctor', dataIndex: 'doctor' },
+  // { key: 'doctor', title: 'Doctor', dataIndex: 'doctor' },
   { key: 'condition', title: 'Injury/Condition', dataIndex: 'injury' },
   {}
 ];
