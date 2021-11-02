@@ -150,13 +150,13 @@ const DashboardPage = () => {
       </div>
 
       <div className='row'>
-        <div className='col-12 col-md-4'>
+        <div className='col-12 col-md-6'>
           <Card title={'patients age'}>
             <ReactEcharts className='chart-container container-h-300' option={patientsAgeOptions} />
           </Card>
         </div>
 
-        <div className='col-12 col-md-4'>
+        <div className='col-12 col-md-6'>
           <Card title={'patients gender'}>
             <ReactEcharts
               className='chart-container container-h-300'
@@ -165,11 +165,6 @@ const DashboardPage = () => {
           </Card>
         </div>
 
-        <div className='col-12 col-md-4'>
-          <Card title={'Departments'}>
-            <ReactEcharts className='chart-container container-h-300' option={departmentsOptions} />
-          </Card>
-        </div>
       </div>
 
       <Card title='Last appointments' className='mb-0'>
