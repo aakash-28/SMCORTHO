@@ -40,10 +40,10 @@ const pageData: IPageData = {
 const FormInvoice = () => {
   usePageData(pageData);
 
-  const [inputList, setInputList] = useState([{ medicine: "", morning: "", afternoon: "", evening: "" }]);
+  const [inputList, setInputList] = useState([{ medicine: "", quantity: "" }]);
 
   const handleAddClick = () => {
-    setInputList([...inputList, { medicine: "", morning: "", afternoon: "", evening: "" }])
+    setInputList([...inputList, { medicine: "", quantity: "" }])
   };
 
   const handleRemoveClick = index => {
@@ -83,21 +83,6 @@ const FormInvoice = () => {
         </Form>
       </Card>
 
-      <div className='row'>
-        <div className='col-md-6 col-sm-12'>
-          <Card>
-            <Form layout='vertical'>
-              <Form.Item label='Notes'>
-                <Input.TextArea placeholder='Notes' />
-              </Form.Item>
-              <Form.Item label='Charting'>
-                <Input.TextArea placeholder='Charting' />
-              </Form.Item>
-            </Form>
-          </Card>
-        </div>
-      </div>
-
       <Card title='Prescription' className='mb-0'>
         <Form layout='vertical'>
         {inputList.map((x, i) => {
@@ -116,34 +101,12 @@ const FormInvoice = () => {
               </Form.Item>
             </div>
             <div className='col-md-1 col-sm-12'>
-            <Form.Item label='Morning'>
+            <Form.Item label='Quantity'>
               <Input
-                name='morning'
+                name='quantity'
                 placeholder='0'
                 className='mb-md-0 mb-4'
-                value={x.morning}
-                onChange={e => handleInputChange(e, i)}
-              />
-              </Form.Item>
-            </div>
-            <div className='col-md-1 col-sm-12'>
-                <Form.Item label='Afternoon'>
-              <Input
-                name='afternoon'
-                placeholder='0'
-                className='mb-md-0 mb-4'
-                value={x.afternoon}
-                onChange={e => handleInputChange(e, i)}
-              />
-              </Form.Item>
-            </div>
-            <div className='col-md-1 col-sm-12'>
-                <Form.Item label='Evening'>
-              <Input
-                name='evening'
-                placeholder='0'
-                className='mb-md-0 mb-4'
-                value={x.evening}
+                value={x.quantity}
                 onChange={e => handleInputChange(e, i)}
               />
               </Form.Item>
@@ -171,12 +134,12 @@ const FormInvoice = () => {
       <div className='row' style={{float:'right'}}>
         <div className='col-md-6 col-sm-12'>
             <Button block type='primary' htmlType='submit'>
-            Generate PDF
+            Print
             </Button>
         </div>
         <div className='col-md-6 col-sm-12'>
             <Button block type='primary' htmlType='submit'>
-            Generate PDF
+            Save
             </Button>
         </div>
       </div>
