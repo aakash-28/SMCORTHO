@@ -46,7 +46,6 @@ import FormValidationPage from '../pages/forms/FormValidationPage';
 import AntdIconsPage from '../pages/icons/AntdIconsPage';
 import IconsOptionsPage from '../pages/icons/IconsOptionsPage';
 import IcofontIconsPage from '../pages/icons/IcofontIconsPage';
-import ActivityLog from '../pages/medic/ActivityLog';
 export const defaultRoutes: IRoute[] = [
   {
     path: 'settings',
@@ -228,8 +227,4 @@ export const defaultRoutes: IRoute[] = [
     path: 'icofont-icons',
     component: IcofontIconsPage
   },
-  {
-    path: 'activity',
-    component: ActivityLog
-  }
 ];
