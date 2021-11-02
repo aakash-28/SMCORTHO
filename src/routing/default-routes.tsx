@@ -46,6 +46,8 @@ import FormValidationPage from '../pages/forms/FormValidationPage';
 import AntdIconsPage from '../pages/icons/AntdIconsPage';
 import IconsOptionsPage from '../pages/icons/IconsOptionsPage';
 import IcofontIconsPage from '../pages/icons/IcofontIconsPage';
+import FormPrescription from '../pages/forms/FormPrescription';
+import FormInvoice from '../pages/forms/FormInvoice';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -215,6 +217,14 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'form-validation',
     component: FormValidationPage
+  },
+  {
+    path: 'form-prescription',
+    component: FormPrescription
+  },
+  {
+    path: 'form-invoice',
+    component: FormInvoice
   },
   {
     path: 'ant-icons',
