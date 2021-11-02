@@ -242,5 +242,5 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'icofont-icons',
     component: IcofontIconsPage
-  }
+  },
 ];
