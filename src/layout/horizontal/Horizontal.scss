@@ -16,6 +16,9 @@
       .navbar-wrap {
         .logo {
           padding: 0;
+          padding-bottom: 15px;
+          max-height: 100px;
+          max-width: 150px;
 
           @media #{$min992} {
             padding-left: 0;

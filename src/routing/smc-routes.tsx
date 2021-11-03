@@ -3,6 +3,7 @@ import PatientsPage from "../pages/dashboards/patients/Patients";
 import EventsCalendarPage from "../pages/medic/EventsCalendarPage";
 import FeedbackPage from "../pages/medic/FeedbackPage";
 import ActivityLog from "../pages/medic/ActivityLog";
+import PatientDash from "../pages/medic/PatientDash";
 
 export const smcRoutes: IRoute[] = [
     {
@@ -20,5 +21,9 @@ export const smcRoutes: IRoute[] = [
     {
       path: 'activitylog',
       component: ActivityLog
+    },
+    {
+      path: 'patient',
+      component: PatientDash
     },
 ];
