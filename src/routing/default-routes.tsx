@@ -31,7 +31,6 @@ import PricingPage from '../pages/services/PricingPage';
 import EventsTimelinePage from '../pages/services/events-timeline/EventsTimeline';
 import UserProfilePage from '../pages/services/UserProfilePage';
 import EditAccountPage from '../pages/services/EditAccounPage';
-import EventsCalendarPage from '../pages/services/EventsCalendarPage';
 import EchartsPage from '../pages/charts/echarts/EchartsPage';
 import TypographyPage from '../pages/typography/TypographyPage';
 import RechartsPage from '../pages/charts/recharts/Rechart';
@@ -49,6 +48,8 @@ import IcofontIconsPage from '../pages/icons/IcofontIconsPage';
 import FormPrescription from '../pages/forms/FormPrescription';
 import FormInvoice from '../pages/forms/FormInvoice';
 import SmcPatientProfilePage from '../pages/medic/SmcPatientProfilePage';
+import EventsCalendarPage from "../pages/medic/EventsCalendarPage";
+import PatientDash from "../pages/medic/PatientDash";
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -242,5 +243,13 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'icofont-icons',
     component: IcofontIconsPage
+  },
+  {
+    path: 'calendarview',
+    component: EventsCalendarPage
+  },
+  {
+    path: 'patient',
+    component: PatientDash
   },
 ];

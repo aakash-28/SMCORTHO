@@ -9,7 +9,7 @@ import Menu from '../components/menu/Menu';
 import Navbar from '../components/navbar/Navbar';
 import Search from '../components/search/Search';
 
-import LogoSvg from './../../assets/img/logo.svg';
+import LogoSvg from './../../assets/img/logo.png';
 
 import Actions from '../components/actions/Actions';
 
