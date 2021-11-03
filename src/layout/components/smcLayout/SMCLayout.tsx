@@ -10,7 +10,6 @@ import Navbar from '../navbar/Navbar';
 import Menu from '../menu/Menu';
 import Search from '../search/Search';
 import NavLoader from '../navbar/NavLoader';
-import AddPatient from '../patients/AddPatient';
 
 import Actions from '../actions/Actions';
 import { toggleSidebar } from '../../../redux/settings/actions';
@@ -21,6 +20,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IAppState } from '../../../interfaces/app-state';
 
 import './SMCLayout.scss';
+import { SMCSideNavOptions } from './smcNavOptions';
 
 type Props = {
   children: any;
@@ -45,6 +45,7 @@ const SMCLayout = ({ children }: Props) => {
       setMenuData(result.data);
     }
 
+    setMenuData(SMCSideNavOptions)
     // fetchMenuData().catch((err) => console.log('Server Error', err));
   }, []);
 

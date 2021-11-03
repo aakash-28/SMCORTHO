@@ -2,11 +2,8 @@ import React from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import VerticalLayout from './layout/vertical/Vertical';
-import HorizontalLayout from './layout/horizontal/Horizontal';
-
 import NotFound from './pages/sessions/404';
-import { defaultRoutes, sessionRoutes } from './routing';
+import { sessionRoutes } from './routing/session-routes';
 
 import './App.scss';
 import { useHideLoader } from './hooks/useHideLoader';
@@ -47,8 +44,6 @@ const SMCRoutes = () => (
   </Switch>
 );
 
-const DefaultRoutes = ({ layout }) => <Routes routes={defaultRoutes} layout={layout} />;
-
 const SessionRoutes = () => <Routes routes={sessionRoutes} layout='public' />;
 
 const App = () => {
@@ -57,23 +52,11 @@ const App = () => {
   return (
     <Switch>
       <Route exact path='/'>
-        <Redirect to='/vertical/default-dashboard' />
+        <Redirect to='/smc/default' />
       </Route>
 
       <Route path='/public'>
         <SessionRoutes />
-      </Route>
-
-      <Route path='/horizontal'>
-        <HorizontalLayout>
-          <DefaultRoutes layout='horizontal' />
-        </HorizontalLayout>
-      </Route>
-
-      <Route path='/vertical'>
-        <VerticalLayout>
-          <DefaultRoutes layout='vertical' />
-        </VerticalLayout>
       </Route>
 
       <Route path='/smc'>

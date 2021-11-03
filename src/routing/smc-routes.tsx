@@ -1,5 +1,5 @@
 import { IRoute } from "../interfaces/routing";
-import PatientsPage from "../pages/dashboards/patients/Patients";
+import PatientsPage from "../pages/patients/Patients";
 
 export const smcRoutes: IRoute[] = [
     {

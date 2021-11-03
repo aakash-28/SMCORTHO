@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Avatar, Table, Button, Modal, Tag } from 'antd';
 import { ColumnProps } from 'antd/es/table';
 
-import { IPatient } from '../../../interfaces/patient';
+import { IPatient } from '../../interfaces/patient';
 
-import { history } from '../../../redux/store';
-import PatientForm from '../../../layout/components/patients/PatientForm';
+import { history } from '../../redux/store';
+import PatientForm from '../../layout/components/patients/PatientForm';
 
 type Props = {
   patients: IPatient[];
