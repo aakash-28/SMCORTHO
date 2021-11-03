@@ -49,6 +49,7 @@ import IcofontIconsPage from '../pages/icons/IcofontIconsPage';
 import FormPrescription from '../pages/forms/FormPrescription';
 import FormInvoice from '../pages/forms/FormInvoice';
 import SmcPatientProfilePage from '../pages/medic/SmcPatientProfilePage';
+import SmcSettings from '../pages/medic/SettingsPage/SmcSettings';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -243,4 +244,8 @@ export const defaultRoutes: IRoute[] = [
     path: 'icofont-icons',
     component: IcofontIconsPage
   },
+  {
+    path: 'smc-settings',
+    component: SmcSettings
+  }
 ];

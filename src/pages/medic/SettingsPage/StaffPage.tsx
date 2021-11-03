@@ -28,7 +28,7 @@ const PatientImg = ({ img }: PatientsImgProps) => {
   return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
 };
 
-const smcPatientsTable = ({
+const StaffPage = ({
   patients,
   onEditPatient = () => null,
   onDeletePatient = () => null
@@ -38,7 +38,7 @@ const smcPatientsTable = ({
 
   const closeModal = () => setVisibility(false);
 
-  const handleShowInfo = () => history.push('/vertical/patient-profile');
+  const handleShowInfo = () => history.push('/vertical/smc-patient-profile');
   const handleDeletePatient = (id) => onDeletePatient(id);
   const handleEditPatient = (patient: IPatient) => {
     setPatient(patient);
@@ -74,6 +74,17 @@ const smcPatientsTable = ({
       render: (name) => <strong onClick={handleShowInfo} style={{cursor:'pointer'}}>{name}</strong>
     },
     {
+      key: 'number',
+      dataIndex: 'number',
+      title: 'Number',
+      render: (phone) => (
+        <span className='d-flex align-baseline nowrap' style={{ color: '#336cfb' }}>
+          <span className='icofont icofont-ui-cell-phone mr-1' style={{ fontSize: 16 }} />
+          {phone}
+        </span>
+      )
+    },
+    {
       key: 'id',
       dataIndex: 'id',
       title: 'ID',
@@ -100,17 +111,6 @@ const smcPatientsTable = ({
       dataIndex: 'address',
       title: 'Address',
       render: (address) => <span style={{ minWidth: 200, display: 'block' }}>{address}</span>
-    },
-    {
-      key: 'number',
-      dataIndex: 'number',
-      title: 'Number',
-      render: (phone) => (
-        <span className='d-flex align-baseline nowrap' style={{ color: '#336cfb' }}>
-          <span className='icofont icofont-ui-cell-phone mr-1' style={{ fontSize: 16 }} />
-          {phone}
-        </span>
-      )
     },
     {
       key: 'visit',
@@ -175,4 +175,4 @@ const smcPatientsTable = ({
   );
 };
 
-export default smcPatientsTable;
+export default StaffPage;

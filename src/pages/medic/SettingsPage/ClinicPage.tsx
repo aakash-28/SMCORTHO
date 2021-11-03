@@ -3,9 +3,9 @@ import React, {useState} from 'react';
 import { AutoComplete, Button, Card, Form, Input } from 'antd';
 import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons/lib';
 
-import { useFetchPageData, usePageData } from '../../hooks/usePage';
-import { IPageData } from '../../interfaces/page';
-import { IOption } from '../../interfaces/option';
+import { useFetchPageData, usePageData } from '../../../hooks/usePage';
+import { IPageData } from '../../../interfaces/page';
+import { IOption } from '../../../interfaces/option';
 
 const formItemLayout = {
   labelCol: {
@@ -19,7 +19,7 @@ const formItemLayout = {
 };
 
 const pageData: IPageData = {
-  title: 'Prescription',
+  title: 'Settings',
   fulFilled: true,
   breadcrumbs: [
     {
@@ -31,14 +31,14 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Precription'
+      title: 'Settings'
     }
   ]
 };
 
 
 
-const FormPrescription = () => {
+const ClinicPage = () => {
   const [dataSource] = useFetchPageData<IOption[]>('./data/autocomplete.json', []);
   usePageData(pageData);
 
@@ -110,11 +110,10 @@ const FormPrescription = () => {
             {/* <AutoComplete filterOption options={dataSource} defaultValue='USA' /> */}
               <AutoComplete
                 // name='medicine'
-                //TODO
                 filterOption 
                 options={dataSource}
                 placeholder='Medicine'
-                className='mb-md-0 mb-4'
+                className='mb-md-0 mb-4 medicine'
                 value={x.medicine}
                 onChange={e => handleInputChange(e, i)}
               />
@@ -192,4 +191,4 @@ const FormPrescription = () => {
   );
 };
 
-export default FormPrescription;
+export default ClinicPage;
