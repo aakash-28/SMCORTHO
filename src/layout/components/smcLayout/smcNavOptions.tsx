@@ -41,14 +41,14 @@ export const SMCSideNavOptions = [
         "icon": {
         "class": "icofont-chart-bar-graph"
         },
-        "routing": "patients"
+        "routing": "statistics"
     },
     {
         "title": "Activity log",
         "icon": {
         "class": "icofont-cc-camera"
         },
-        "routing": "patients"
+        "routing": "logs"
     },
     {
         "title": "Feedback",

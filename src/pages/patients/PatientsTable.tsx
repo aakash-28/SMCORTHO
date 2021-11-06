@@ -38,40 +38,40 @@ const PatientsTable = ({
 
   const closeModal = () => setVisibility(false);
 
-  const handleShowInfo = () => history.push('/vertical/patient-profile');
+  const handleShowInfo = () => history.push('/smc/patient-profile');
   const handleDeletePatient = (id) => onDeletePatient(id);
   const handleEditPatient = (patient: IPatient) => {
     setPatient(patient);
     setVisibility(true);
   };
 
-  const actions = (patient: IPatient) => (
-    <div className='buttons-list nowrap'>
-      <Button shape='circle' onClick={handleShowInfo}>
-        <span className='icofont icofont-external-link' />
-      </Button>
-      <Button onClick={handleEditPatient.bind({}, patient)} shape='circle' type='primary'>
-        <span className='icofont icofont-edit-alt' />
-      </Button>
-      <Button onClick={handleDeletePatient.bind({}, patient.id)} shape='circle' danger>
-        <span className='icofont icofont-ui-delete' />
-      </Button>
-    </div>
-  );
+  // const actions = (patient: IPatient) => (
+  //   <div className='buttons-list nowrap'>
+  //     <Button shape='circle' onClick={handleShowInfo}>
+  //       <span className='icofont icofont-external-link' />
+  //     </Button>
+  //     <Button onClick={handleEditPatient.bind({}, patient)} shape='circle' type='primary'>
+  //       <span className='icofont icofont-edit-alt' />
+  //     </Button>
+  //     <Button onClick={handleDeletePatient.bind({}, patient.id)} shape='circle' danger>
+  //       <span className='icofont icofont-ui-delete' />
+  //     </Button>
+  //   </div>
+  // );
 
   const columns: ColumnProps<IPatient>[] = [
-    {
-      key: 'img',
-      title: 'Photo',
-      dataIndex: 'img',
-      render: (img) => <PatientImg img={img} />
-    },
+    // {
+    //   key: 'img',
+    //   title: 'Photo',
+    //   dataIndex: 'img',
+    //   render: (img) => <PatientImg img={img} />
+    // },
     {
       key: 'name',
       dataIndex: 'name',
       title: 'Name',
       sorter: (a, b) => (a.name > b.name ? 1 : -1),
-      render: (name) => <strong>{name}</strong>
+      render: (name) => <strong onClick={handleShowInfo} style={{cursor:'pointer'}}>{name}</strong>
     },
     {
       key: 'id',
@@ -122,21 +122,27 @@ const PatientsTable = ({
         </span>
       )
     },
-    {
-      key: 'status',
-      dataIndex: 'status',
-      title: 'Status',
-      render: (status) => (
-        <Tag style={{ borderRadius: 20 }} color={status === 'Approved' ? '#b7ce63' : '#cec759'}>
-          {status}
-        </Tag>
-      ),
-      sorter: (a, b) => (a.status > b.status ? 1 : -1)
-    },
+    // {
+    //   key: 'status',
+    //   dataIndex: 'status',
+    //   title: 'Status',
+    //   render: (status) => (
+    //     <Tag style={{ borderRadius: 20 }} color={status === 'Approved' ? '#b7ce63' : '#cec759'}>
+    //       {status}
+    //     </Tag>
+    //   ),
+    //   sorter: (a, b) => (a.status > b.status ? 1 : -1)
+    // },
     {
       key: 'actions',
       title: 'Actions',
-      render: actions
+      render: (actions) => (
+        <div className='buttons-list nowrap'>
+          <Button shape='circle' onClick={handleShowInfo}>
+            <span className='icofont icofont-plus' />
+          </Button>
+        </div>
+      )
     }
   ];
 
