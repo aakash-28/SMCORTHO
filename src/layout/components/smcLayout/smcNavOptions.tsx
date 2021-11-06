@@ -15,14 +15,14 @@ export const SMCSideNavOptions = [
         "icon": {
         "class": "icofont-stethoscope-alt"
         },
-        "routing": "appointments"
+        "routing": "appointment"
     },
     {
         "title": "Payment",
         "icon": {
         "class": "icofont-papers"
         },
-        "routing": "payments"
+        "routing": "payment"
     },
 
     {
