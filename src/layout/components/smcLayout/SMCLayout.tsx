@@ -10,6 +10,7 @@ import Navbar from '../navbar/Navbar';
 import Menu from '../menu/Menu';
 import Search from '../search/Search';
 import NavLoader from '../navbar/NavLoader';
+import LogoPNG from '../../../assets/img/logo.png';
 
 import Actions from '../actions/Actions';
 import { toggleSidebar } from '../../../redux/settings/actions';
@@ -21,6 +22,7 @@ import { IAppState } from '../../../interfaces/app-state';
 
 import './SMCLayout.scss';
 import { SMCSideNavOptions } from './smcNavOptions';
+import Logo from '../logo/Logo';
 
 type Props = {
   children: any;
@@ -46,6 +48,7 @@ const SMCLayout = ({ children }: Props) => {
     }
 
     setMenuData(SMCSideNavOptions)
+    pageData.loaded = true
     // fetchMenuData().catch((err) => console.log('Server Error', err));
   }, []);
 
@@ -79,12 +82,12 @@ const SMCLayout = ({ children }: Props) => {
       orientation='vertical'
     >
 
-      {/* TODO: Add Logo here */}
+      <Logo src={LogoPNG} />
 
       <Menu
         onCloseSidebar={onSidebarToggle}
         opened={settings.sidebarOpened}
-        orientation='vertical'
+        orientation='smc'
         data={menuData}
       />
 

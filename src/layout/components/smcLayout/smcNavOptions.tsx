@@ -1,17 +1,33 @@
 export const SMCSideNavOptions = [
     {
+        "title": "Activities",
+        "groupTitle": true
+    },
+    {
         "title": "Calendar",
         "icon": {
         "class": "icofont-calendar"
         },
-        "routing": "default-dashboard"
+        "routing": "calendar"
     },
     {
-        "title": "Appointments",
+        "title": "Appointment",
         "icon": {
         "class": "icofont-stethoscope-alt"
         },
         "routing": "appointments"
+    },
+    {
+        "title": "Payment",
+        "icon": {
+        "class": "icofont-papers"
+        },
+        "routing": "payments"
+    },
+
+    {
+        "title": "Information",
+        "groupTitle": true
     },
     {
         "title": "Patients",
@@ -21,10 +37,24 @@ export const SMCSideNavOptions = [
         "routing": "patients"
     },
     {
-        "title": "Payments",
+        "title": "Statistics",
         "icon": {
-        "class": "icofont-pay"
+        "class": "icofont-chart-bar-graph"
         },
-        "routing": "payments"
-    }
+        "routing": "patients"
+    },
+    {
+        "title": "Activity log",
+        "icon": {
+        "class": "icofont-cc-camera"
+        },
+        "routing": "patients"
+    },
+    {
+        "title": "Feedback",
+        "icon": {
+        "class": "icofont-google-talk"
+        },
+        "routing": "feedback"
+    },
 ]      

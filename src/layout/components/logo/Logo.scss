@@ -12,9 +12,8 @@
 
   .logo-img {
     height: auto;
-    max-height: 100%;
-    max-width: 100%;
     vertical-align: top;
+    margin-top: ($module-rem * 2);
     width: auto;
   }
   .logo-text {
