@@ -4,6 +4,7 @@ import EventsCalendarPage from "../pages/medic/EventsCalendarPage";
 import FeedbackPage from "../pages/medic/FeedbackPage";
 import ActivityLog from "../pages/medic/ActivityLog";
 import PatientDash from "../pages/medic/PatientDash";
+import AppointmentHistory from "../pages/medic/AppointmentHistory";
 
 export const smcRoutes: IRoute[] = [
     {
@@ -25,5 +26,9 @@ export const smcRoutes: IRoute[] = [
     {
       path: 'patient',
       component: PatientDash
+    },
+    {
+      path: 'appointmenthistory',
+      component: AppointmentHistory
     },
 ];

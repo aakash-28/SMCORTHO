@@ -1,0 +1,16 @@
+.feedbackbtn{
+    text-align: left;
+}
+.feedbackmodalques{
+    margin-bottom: 0px;
+}
+.feedbackrating{
+    margin-bottom: 10px !important;
+}
+.feedbackrating .ant-card-body{
+    margin-bottom: 0px;
+    padding-left: 11px !important;
+}
+.feedbackcard .ant-card-body{
+    padding-top: 0px !important;
+}

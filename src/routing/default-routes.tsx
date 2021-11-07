@@ -50,6 +50,7 @@ import FormInvoice from '../pages/forms/FormInvoice';
 import SmcPatientProfilePage from '../pages/medic/SmcPatientProfilePage';
 import EventsCalendarPage from "../pages/medic/EventsCalendarPage";
 import PatientDash from "../pages/medic/PatientDash";
+import AppointmentHistory from "../pages/medic/AppointmentHistory";
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -251,5 +252,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'patient',
     component: PatientDash
+  },
+  {
+    path: 'appointmenthistory',
+    component: AppointmentHistory
   },
 ];
