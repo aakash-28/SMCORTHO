@@ -18,7 +18,8 @@ import {
   ReloadOutlined,
   SendOutlined
 } from '@ant-design/icons/lib';
-
+import CalendarComp from './components/CalendarComp'
+import './css/patient.css'
 const { Item } = Form;
 const { RangePicker } = DatePicker;
 const rules = {
@@ -109,10 +110,6 @@ const pageData: IPageData = {
     {
       title: 'Home',
       route: 'default-dashboard'
-    },
-    {
-      title: 'Patient Dashboard ',
-      route: 'default-dashboard'
     }
   ]
 };
@@ -127,6 +124,9 @@ const PatientDash = () => {
           <Card title='New Appointment' className='mb-0'>
             <FormWithMessages />
           </Card>
+        </div>
+        <div className='col-md-6'>
+            <CalendarComp />
         </div>
       </div>
     </div>

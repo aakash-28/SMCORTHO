@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Card, Modal } from 'antd';
-import { IPageData } from '../../interfaces/page';
-import DayView from './components/DayView';
+import { IPageData } from '../../../interfaces/page';
+import DayView from '../components/DayView';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { usePageData } from '../../hooks/usePage';
-import './css/calendar.css';
 
 
 
@@ -15,26 +13,7 @@ const headerOptions = {
   right: 'dayGridMonth,dayGridWeek,dayGridDay'
 };
 
-const pageData: IPageData = {
-  title: '',
-  fulFilled: true,
-  breadcrumbs: [
-    {
-      title: 'Apps',
-      route: 'default-dashboard'
-    },
-    {
-      title: 'Service pages',
-      route: 'default-dashboard'
-    },
-    {
-      title: 'Events calendar'
-    }
-  ]
-};
-
-const EventsCalendarPage = () => {
-  usePageData(pageData);
+const CalendarComp = () => {
   const [event, setEvent] = useState(null);
   const [modalVisibility, setModalVisibility] = useState(false);
 
@@ -49,56 +28,45 @@ const EventsCalendarPage = () => {
   
   const events = [
     {
-      title: 'Appointment',
+      title: 'Occupied',
       color: '#e9e165',
       classNames: ['event-error'],
       start: setDate(0, 2),
       end: setDate(0, 3),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
     },
     {
-      title: 'Appointment',
-      color: '#f56565',
+      title: 'Occupied',
+      color: '#e9e165',
       start: setDate(1, -1),
       end: setDate(1, 3),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
     },
     {
-      title: 'Appointment',
-      color: '#4299e1',
+      title: 'Occupied',
+      color: '#e9e165',
       start: setDate(1),
       classNames: ['event-pink'],
       end: setDate(1, 3),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
     },
     {
-      title: 'Appointment',
-      color: '#ed5564',
+      title: 'Occupied',
+      color: '#e9e165',
       classNames: ['event-orange'],
       start: setDate(1, -3),
       end: setDate(1, -2),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
     },
     {
-      title: 'Appointment',
+      title: 'Occupied',
       color: '#e9e165',
       start: setDate(3, -5),
       end: setDate(4),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
+      
     },
     {
-      title: 'Appointment',
+      title: 'Occupied',
       color: '#e9e165',
       classNames: ['event-green'],
       start: setDate(5, 10),
       end: setDate(6),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
     }
   ];
 
@@ -120,11 +88,6 @@ const EventsCalendarPage = () => {
             From: {event.start.toDateString()} - to: {event.end.toDateString()}
           </span>
         </div>
-
-        <div className='event-desc flex-column'>
-          <h5 className='event-title m-0'>Event description</h5>
-          <span>{event.extendedProps.desc}</span>
-        </div>
       </div>
     );
 
@@ -141,7 +104,6 @@ const EventsCalendarPage = () => {
         <Button onClick={closeModal} danger>
           Close
         </Button>
-        <Button type='primary'>Change event</Button>
       </div>
     );
   }
@@ -151,7 +113,7 @@ const EventsCalendarPage = () => {
     
     <div className='container calendarviewcard'>
       <div className='row'>
-        <Card title='Your Schedule' className=' col-md-8 calendarcard'>
+        <Card title='Doctors Schedule' className=' col-md-8 calendarcard'>
           <FullCalendar
             eventClick={handleEventClick}
             events={events}
@@ -162,17 +124,6 @@ const EventsCalendarPage = () => {
             weekends
           />
         </Card>
-
-        <Card title='Todays Events' className='col-md-3 calendarcard'>
-        <div className='col-md-12 col-sm-12'>
-          <Card>
-            <div className='elem-list'>
-              <Button>Add Walk-in Appointment</Button>
-            </div>
-          </Card>
-        </div>
-            <DayView/>
-          </Card>
 
         <Modal
           title={modalTitle}
@@ -190,5 +141,6 @@ const EventsCalendarPage = () => {
   
 };
 
-export default EventsCalendarPage;
+
+export default CalendarComp;
 

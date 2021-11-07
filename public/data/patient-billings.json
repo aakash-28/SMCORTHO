@@ -4,69 +4,69 @@
     "billDate": "18 Feb 2019",
     "patient": "Priya Patel",
     "doctor": "Juan Freeman",
-    "charges": "155$",
-    "tax": "10%",
-    "discount": "5$",
-    "total": "160$"
+    "charges": "155 Rs",
+    "tax": "0%",
+    "discount": "5 Rs",
+    "total": "150 Rs"
   },
   {
     "billNo": "131",
     "billDate": "17 Feb 2019",
     "patient": "Mayank Jani",
     "doctor": "Christina Thomas",
-    "charges": "121$",
-    "tax": "10%",
-    "discount": "5$",
-    "total": "125$"
+    "charges": "121 Rs",
+    "tax": "0%",
+    "discount": "5 Rs",
+    "total": "116 Rs"
   },
   {
     "billNo": "130",
     "billDate": "17 Feb 2019",
     "patient": "Jenish Shah",
     "doctor": "Juan Freeman",
-    "charges": "70$",
-    "tax": "10%",
-    "discount": "5$",
-    "total": "75$"
+    "charges": "70 Rs",
+    "tax": "0%",
+    "discount": "5 Rs",
+    "total": "65 Rs"
   },
   {
     "billNo": "129",
     "billDate": "16 Feb 2019",
     "patient": "Jayna Sharma",
     "doctor": "Jessica Patterson",
-    "charges": "45$",
-    "tax": "10%",
-    "discount": "5$",
-    "total": "48$"
+    "charges": "45 Rs",
+    "tax": "0%",
+    "discount": "5 Rs",
+    "total": "40 Rs"
   },
   {
     "billNo": "128",
     "billDate": "15 Feb 2019",
     "patient": "Sonali Malik",
     "doctor": "Lori Perkins",
-    "charges": "120$",
-    "tax": "10%",
-    "discount": "5$",
-    "total": "124$"
+    "charges": "120 Rs",
+    "tax": "0%",
+    "discount": "5 Rs",
+    "total": "115 Rs"
   },
   {
     "billNo": "133",
     "billDate": "13 Feb 2019",
     "patient": "Mayank Jani",
     "doctor": "Jessica Patterson",
-    "charges": "25$",
-    "tax": "10%",
-    "discount": "5$",
-    "total": "27$"
+    "charges": "25 Rs",
+    "tax": "0%",
+    "discount": "5 Rs",
+    "total": "20 Rs"
   },
   {
     "billNo": "134",
     "billDate": "13 Feb 2019",
     "patient": "Pooja Patel",
     "doctor": "Juan Freeman",
-    "charges": "320$",
-    "tax": "10%",
-    "discount": "5$",
-    "total": "340$"
+    "charges": "320 Rs",
+    "tax": "0%",
+    "discount": "5 Rs",
+    "total": "315 Rs"
   }
 ]

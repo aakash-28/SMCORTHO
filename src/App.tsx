@@ -11,6 +11,7 @@ import { defaultRoutes, sessionRoutes } from './routing';
 import './App.scss';
 import { useHideLoader } from './hooks/useHideLoader';
 import SMCLayout from './layout/components/smcLayout/SMCLayout';
+import PatientLayout from './layout/PatientLayout/PatientLayout';
 import { smcRoutes } from './routing/smc-routes';
 
 const Routes = ({ routes, layout = '' }) => (
@@ -37,6 +38,22 @@ const SMCRoutes = () => (
         key={index}
         exact={false}
         path={`/smc/${route.path}`}
+        component={() => <route.component />}
+      />
+    ))}
+
+    <Route path='*'>
+      <Redirect to='/public/page-404' />
+    </Route>
+  </Switch>
+);
+const PatientRoutes = () => (
+  <Switch>
+    {smcRoutes.map((route, index) => (
+      <Route
+        key={index}
+        exact={false}
+        path={`/patient/${route.path}`}
         component={() => <route.component />}
       />
     ))}
@@ -80,6 +97,12 @@ const App = () => {
         <SMCLayout>
           <SMCRoutes />
         </SMCLayout>
+      </Route>
+
+      <Route path='/patient'>
+        <PatientLayout>
+          <PatientRoutes />
+        </PatientLayout>
       </Route>
 
       <Route path='*'>

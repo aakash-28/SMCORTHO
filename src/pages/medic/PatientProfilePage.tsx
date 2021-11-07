@@ -8,24 +8,19 @@ import { IPageData } from '../../interfaces/page';
 import { usePageData } from '../../hooks/usePage';
 import { useGetPatient } from '../../hooks/useGetPatient';
 import { useGetBillings } from '../../hooks/useGetBillings';
-
 import ImageLoader from '../../layout/components/patients/ImageLoader';
-import BillingTable from './components/BillingTable';
+import PatientBillingTable from './components/PatientBillingTable';
 
 const pageData: IPageData = {
   title: 'Patient profile page',
   fulFilled: true,
   breadcrumbs: [
     {
-      title: 'Medicine',
-      route: 'default-dashboard'
+      title: 'Home',
+      route: 'patient/patientdashboard'
     },
     {
-      title: 'Doctors',
-      route: 'default-dashboard'
-    },
-    {
-      title: 'Liam Jouns'
+      title: 'Profile'
     }
   ]
 };
@@ -42,11 +37,11 @@ const ProfileForm = ({ patient }) => {
   return (
     <Form layout='vertical'>
       <FormItem label='Full name'>
-        <Input defaultValue={values.fullName} placeholder='Full name' />
+        <Input defaultValue='Abhishek Prakash' placeholder='Full name' />
       </FormItem>
 
       <FormItem label='Id'>
-        <Input defaultValue={values.id} placeholder='Id' />
+        <Input disabled defaultValue={values.id} placeholder='Id' />
       </FormItem>
 
       <div className='row'>
@@ -66,22 +61,15 @@ const ProfileForm = ({ patient }) => {
       </div>
 
       <FormItem label='Phone'>
-        <Input defaultValue={values.phone} placeholder='Phone' />
+        <Input defaultValue='+91 9005352552' placeholder='Phone' />
       </FormItem>
 
       <FormItem label='Address'>
-        <Input.TextArea rows={4} defaultValue={values.address} placeholder='Address' />
+        <Input.TextArea rows={4} defaultValue='B 31 Park Street, Near SMC Clinic, Chennai-266040' placeholder='Address' />
       </FormItem>
 
       <FormItem label='Last visit'>
-        <Input defaultValue={values.lastVisit} placeholder='Last visit' readOnly />
-      </FormItem>
-
-      <FormItem label='Status'>
-        <Select defaultValue={values.status} placeholder='Status'>
-          <Option value='Approved'>Approved</Option>
-          <Option value='Pending'>Pending</Option>
-        </Select>
+        <Input disabled defaultValue={values.lastVisit} placeholder='Last visit' readOnly />
       </FormItem>
     </Form>
   );
@@ -89,10 +77,10 @@ const ProfileForm = ({ patient }) => {
 
 const PatientTimeline = () => (
   <Timeline mode='left'>
-    <Timeline.Item color='red'>
+    <Timeline.Item color='blue'>
       <div className='d-flex flex-column'>
-        <h4 className='m-0'>New prescription</h4>
-        <span className='text-base text-color-100'>Now</span>
+        <h4 className='m-0'>5 November 2021</h4>
+        {/* <span className='text-base text-color-100'>Now</span> */}
         <span className='text-base'>
           Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
           ut id elit.
@@ -102,24 +90,24 @@ const PatientTimeline = () => (
 
     <Timeline.Item color='blue'>
       <div className='d-flex flex-column'>
-        <h4 className='m-0'>Appointment</h4>
-        <span className='text-base text-color-100'>2m ago</span>
+        <h4 className='m-0'>1 November 2021</h4>
+        {/* <span className='text-base text-color-100'>2m ago</span> */}
         <span className='text-base'>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
         </span>
       </div>
     </Timeline.Item>
 
-    <Timeline.Item color='yellow'>
+    <Timeline.Item color='blue'>
       <div className='d-flex flex-column'>
-        <h4 className='m-0'>Medication</h4>
-        <span className='text-base text-color-100'>2h ago</span>
+        <h4 className='m-0'>25 October 2021</h4>
+        {/* <span className='text-base text-color-100'>2h ago</span> */}
         <span className='text-base'>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
         </span>
       </div>
     </Timeline.Item>
-
+{/* 
     <Timeline.Item color='pink'>
       <div className='d-flex flex-column'>
         <h4 className='m-0'>Operation</h4>
@@ -158,7 +146,7 @@ const PatientTimeline = () => (
           ut id elit.
         </span>
       </div>
-    </Timeline.Item>
+    </Timeline.Item> */}
   </Timeline>
 );
 
@@ -173,10 +161,10 @@ const PatientProfilePage = () => {
       <>
         <div className='row mb-4'>
           <div className='col-md-6 col-sm-12'>
-            <div className='header mb-3'>
+            {/* <div className='header mb-3'>
               <h6 className='mt-0 mb-3'>Photo</h6>
               <ImageLoader src={patient.profileImg as string} size={100} />
-            </div>
+            </div> */}
 
             <div className='info stack'>
               <ProfileForm patient={patient} />
@@ -192,7 +180,7 @@ const PatientProfilePage = () => {
         </div>
 
         <Card title='Billings' className='mb-0'>
-          <BillingTable billings={billings} />
+          <PatientBillingTable billings={billings} />
         </Card>
       </>
     )

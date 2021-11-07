@@ -8,6 +8,14 @@ import {
   UserAddOutlined,
   UserOutlined
 } from '@ant-design/icons/lib';
+import {
+  DeleteOutlined,
+  PrinterOutlined,
+  SearchOutlined,
+  SendOutlined,
+  SettingOutlined
+} from '@ant-design/icons';
+
 import { usePageData } from '../../hooks/usePage';
 import { IPageData } from '../../interfaces/page';
 
@@ -87,7 +95,7 @@ const AppointmentHistory = () => {
                 Close
               </Button>
 
-              <Button className='bg-color-success' key='submit' type='primary'>
+              <Button icon={<SendOutlined />} className='bg-color-success' key='submit' type='primary'>
                 Submit
               </Button>
             </div>
@@ -174,7 +182,7 @@ const AppointmentHistory = () => {
                 Close
               </Button>
 
-              <Button className='bg-color-success' key='submit' type='primary'>
+              <Button icon={<SendOutlined />} className='bg-color-success' key='submit' type='primary'>
                 Submit
               </Button>
             </div>
@@ -258,7 +266,7 @@ const AppointmentHistory = () => {
                 Close
               </Button>
 
-              <Button className='bg-color-success' key='submit' type='primary'>
+              <Button icon={<SendOutlined />} className='bg-color-success' key='submit' type='primary'>
                 Submit
               </Button>
             </div>
@@ -345,7 +353,7 @@ const AppointmentHistory = () => {
                 Close
               </Button>
 
-              <Button className='bg-color-success' key='submit' type='primary'>
+              <Button icon={<SendOutlined />} className='bg-color-success' key='submit' type='primary'>
                 Submit
               </Button>
             </div>

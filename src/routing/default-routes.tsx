@@ -47,7 +47,7 @@ import IconsOptionsPage from '../pages/icons/IconsOptionsPage';
 import IcofontIconsPage from '../pages/icons/IcofontIconsPage';
 import FormPrescription from '../pages/forms/FormPrescription';
 import FormInvoice from '../pages/forms/FormInvoice';
-import SmcPatientProfilePage from '../pages/medic/SmcPatientProfilePage';
+import SmcPatientProfilePage from '../pages/medic/PatientProfilePage';
 import EventsCalendarPage from "../pages/medic/EventsCalendarPage";
 import PatientDash from "../pages/medic/PatientDash";
 import AppointmentHistory from "../pages/medic/AppointmentHistory";
