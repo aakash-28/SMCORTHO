@@ -48,8 +48,9 @@ import IconsOptionsPage from '../pages/icons/IconsOptionsPage';
 import IcofontIconsPage from '../pages/icons/IcofontIconsPage';
 import FormPrescription from '../pages/forms/FormPrescription';
 import FormInvoice from '../pages/forms/FormInvoice';
-import SmcPatientProfilePage from '../pages/medic/SmcPatientProfilePage';
+import SmcPatientProfilePage from '../pages/medic/SmcStaffProfilePage';
 import SmcSettings from '../pages/medic/SettingsPage/SmcSettings';
+import SmcStaffProfilePage from '../pages/medic/SmcStaffProfilePage';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -247,5 +248,9 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'smc-settings',
     component: SmcSettings
+  },
+  {
+    path: 'smc-staff-profile',
+    component: SmcStaffProfilePage
   }
 ];

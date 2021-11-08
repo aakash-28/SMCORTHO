@@ -1,33 +1,13 @@
 import React, { useState } from 'react';
 
-import { Avatar, Card, Skeleton, Switch } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { Card} from 'antd';
 
 import { usePageData } from '../../../hooks/usePage';
-import { usePatients } from '../../../hooks/usePatients';
 import { IPageData } from '../../../interfaces/page';
 
 import ClinicPage from './ClinicPage';
 import StaffPage from './StaffPage';
 import CommunicationsPage from './CommunicationsPage';
-
-const { Meta } = Card;
-
-const tabList = [
-  {
-    key: 'tab1',
-    tab: 'Tab1'
-  },
-  {
-    key: 'tab2',
-    tab: 'Tab2'
-  }
-];
-
-const contentList = {
-  tab1: <p>Content1</p>,
-  tab2: <p>Content2</p>
-};
 
 const tabListNoTitle = [
   {
@@ -44,31 +24,18 @@ const tabListNoTitle = [
   }
 ];
 
-// const { patients, editPatient, deletePatient } = usePatients();
-
-// const contentListNoTitle = {
-//   clinic: <ClinicPage/>,
-//   staff: <StaffPage 
-//     onDeletePatient={deletePatient}
-//     onEditPatient={editPatient}
-//     patients={patients}/>,
-//   communications: <CommunicationsPage/>
-// };
 
 const pageData: IPageData = {
   title: 'Settings',
   fulFilled: true,
   breadcrumbs: [
     {
-      title: 'UI Kit',
+      title: 'SMC',
       route: 'default-dashboard'
     },
     {
-      title: 'Components',
+      title: 'Settings',
       route: 'default-dashboard'
-    },
-    {
-      title: 'Settings'
     }
   ]
 };
@@ -76,15 +43,10 @@ const pageData: IPageData = {
 const SmcSettings = () => {
   usePageData(pageData);
 
-  const [loading, setLoading] = useState<boolean>(true);
   const [noTitleKey, setNoTitleKey] = useState('app');
-  const [key, setKey] = useState('tab1');
-
   const onTabChange = (setter: (val: string) => void) => (key: string) => {
     setter(key);
   };
-
-  const { patients, editPatient, deletePatient } = usePatients();
 
   return (
     <>
@@ -96,10 +58,7 @@ const SmcSettings = () => {
       >
         {{
             clinic: <ClinicPage/>,
-            staff: <StaffPage 
-              onDeletePatient={deletePatient}
-              onEditPatient={editPatient}
-              patients={patients}/>,
+            staff: <StaffPage/>,
             communications: <CommunicationsPage/>
           }[noTitleKey]}
       </Card>

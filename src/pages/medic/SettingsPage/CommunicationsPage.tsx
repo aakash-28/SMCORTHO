@@ -11,15 +11,15 @@ const pageData: IPageData = {
   fulFilled: true,
   breadcrumbs: [
     {
-      title: 'Home',
+      title: 'SMC',
       route: 'default-dashboard'
     },
     {
-      title: 'UI Kit ',
+      title: 'Settings',
       route: 'default-dashboard'
     },
     {
-      title: 'Settings'
+      title: 'Communications'
     }
   ]
 };

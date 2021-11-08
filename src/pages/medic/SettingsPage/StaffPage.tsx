@@ -1,178 +1,113 @@
-import React, { useState } from 'react';
-import { Avatar, Table, Button, Modal, Tag } from 'antd';
-import { ColumnProps } from 'antd/es/table';
-
-import { IPatient } from '../../../interfaces/patient';
-
+import React from 'react';
+import { Table, Tag } from 'antd';
 import { history } from '../../../redux/store';
-import PatientForm from '../../../layout/components/patients/PatientForm';
 
-type Props = {
-  patients: IPatient[];
-  onEditPatient?: (patient: IPatient) => void;
-  onDeletePatient?: (id: string) => void;
-};
+import staffs from './staffs';
+import { usePageData } from '../../../hooks/usePage';
+import { IPageData } from '../../../interfaces/page';
+ 
 
-type PatientsImgProps = {
-  img: string;
-};
+const handleShowInfo = () => history.push('/vertical/smc-staff-profile');
+  
+const pagination = staffs.length <= 10 ? false : {};
 
-const PatientImg = ({ img }: PatientsImgProps) => {
-  const isData = img.startsWith('data:image');
-  const isWithPath = img.startsWith('http');
-
-  if (isData || isWithPath) {
-    return <Avatar size={40} src={img} />;
+const columns: any = [
+  {
+    key: 'name',
+    dataIndex: 'name',
+    title: 'Name',
+    sorter: (a, b) => (a.name > b.name ? 1 : -1),
+    render: (name) => <strong onClick={handleShowInfo} style={{cursor:'pointer'}}>{name}</strong>
+  },
+  {
+    key: 'number',
+    dataIndex: 'number',
+    title: 'Number',
+    render: (phone) => (
+      <span className='d-flex align-baseline nowrap' style={{ color: '#336cfb' }}>
+        <span className='icofont icofont-ui-cell-phone mr-1' style={{ fontSize: 16 }} />
+        {phone}
+      </span>
+    )
+  },
+  {
+    key: 'id',
+    dataIndex: 'id',
+    title: 'ID',
+    sorter: (a, b) => (a.id > b.id ? 1 : -1),
+    render: (id) => (
+      <span className='nowrap' style={{ color: '#a5a5a5' }}>
+        {id}
+      </span>
+    )
+  },
+  {
+    key: 'address',
+    dataIndex: 'address',
+    title: 'Address',
+    render: (address) => <span style={{ minWidth: 200, display: 'block' }}>{address}</span>
+  },
+  {
+    key: 'roles',
+    dataIndex: 'roles',
+    title: 'Roles',
+    render: (roles) => <Tag>{roles}</Tag>,
+    filters: [
+      {
+        text: 'ABC',
+        value: 'ABC'
+      },
+      {
+        text: 'DEF',
+        value: 'DEF'
+      },
+      {
+        text: 'GHI',
+        value: 'GHI'
+      },
+      {
+        text: 'MNO',
+        value: 'MNO'
+      },
+      {
+        text: 'PQR',
+        value: 'PQR'
+      },
+      {
+        text: 'XYZ',
+        value: 'XYZ'
+      }
+    ],
+    filterMultiple: true,
+    onFilter: (value, record) => record.roles.indexOf(value) === 0,
+    sorter: (a, b) => a.name.length - b.name.length,
+    sortDirections: ['descend', 'ascend']
   }
+];
 
-  return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
+const pageData: IPageData = {
+  title: 'Settings',
+  fulFilled: true,
+  breadcrumbs: [
+    {
+      title: 'SMC',
+      route: 'default-dashboard'
+    },
+    {
+      title: 'Settings',
+      route: 'default-dashboard'
+    },
+    {
+      title: 'Staff'
+    }
+  ]
 };
 
-const StaffPage = ({
-  patients,
-  onEditPatient = () => null,
-  onDeletePatient = () => null
-}: Props) => {
-  const [patient, setPatient] = useState(null);
-  const [visibility, setVisibility] = useState(false);
+const StaffPage = () => {
 
-  const closeModal = () => setVisibility(false);
+  usePageData(pageData);
 
-  const handleShowInfo = () => history.push('/vertical/smc-patient-profile');
-  const handleDeletePatient = (id) => onDeletePatient(id);
-  const handleEditPatient = (patient: IPatient) => {
-    setPatient(patient);
-    setVisibility(true);
-  };
-
-  // const actions = (patient: IPatient) => (
-  //   <div className='buttons-list nowrap'>
-  //     <Button shape='circle' onClick={handleShowInfo}>
-  //       <span className='icofont icofont-external-link' />
-  //     </Button>
-  //     <Button onClick={handleEditPatient.bind({}, patient)} shape='circle' type='primary'>
-  //       <span className='icofont icofont-edit-alt' />
-  //     </Button>
-  //     <Button onClick={handleDeletePatient.bind({}, patient.id)} shape='circle' danger>
-  //       <span className='icofont icofont-ui-delete' />
-  //     </Button>
-  //   </div>
-  // );
-
-  const columns: ColumnProps<IPatient>[] = [
-    // {
-    //   key: 'img',
-    //   title: 'Photo',
-    //   dataIndex: 'img',
-    //   render: (img) => <PatientImg img={img} />
-    // },
-    {
-      key: 'name',
-      dataIndex: 'name',
-      title: 'Name',
-      sorter: (a, b) => (a.name > b.name ? 1 : -1),
-      render: (name) => <strong onClick={handleShowInfo} style={{cursor:'pointer'}}>{name}</strong>
-    },
-    {
-      key: 'number',
-      dataIndex: 'number',
-      title: 'Number',
-      render: (phone) => (
-        <span className='d-flex align-baseline nowrap' style={{ color: '#336cfb' }}>
-          <span className='icofont icofont-ui-cell-phone mr-1' style={{ fontSize: 16 }} />
-          {phone}
-        </span>
-      )
-    },
-    {
-      key: 'id',
-      dataIndex: 'id',
-      title: 'ID',
-      sorter: (a, b) => (a.id > b.id ? 1 : -1),
-      render: (id) => (
-        <span className='nowrap' style={{ color: '#a5a5a5' }}>
-          {id}
-        </span>
-      )
-    },
-    {
-      key: 'age',
-      dataIndex: 'age',
-      title: 'Age',
-      sorter: (a, b) => a.age - b.age,
-      render: (age) => (
-        <span className='nowrap' style={{ color: '#a5a5a5' }}>
-          {age}
-        </span>
-      )
-    },
-    {
-      key: 'address',
-      dataIndex: 'address',
-      title: 'Address',
-      render: (address) => <span style={{ minWidth: 200, display: 'block' }}>{address}</span>
-    },
-    {
-      key: 'visit',
-      dataIndex: 'lastVisit',
-      title: 'Last visit',
-      render: (visit) => (
-        <span className='nowrap' style={{ color: '#a5a5a5' }}>
-          {visit}
-        </span>
-      )
-    },
-    // {
-    //   key: 'status',
-    //   dataIndex: 'status',
-    //   title: 'Status',
-    //   render: (status) => (
-    //     <Tag style={{ borderRadius: 20 }} color={status === 'Approved' ? '#b7ce63' : '#cec759'}>
-    //       {status}
-    //     </Tag>
-    //   ),
-    //   sorter: (a, b) => (a.status > b.status ? 1 : -1)
-    // },
-    {
-      key: 'actions',
-      title: 'Actions',
-      render: (actions) => (
-        <div className='buttons-list nowrap'>
-          <Button shape='circle' onClick={handleShowInfo}>
-            <span className='icofont icofont-plus' />
-          </Button>
-        </div>
-      )
-    }
-  ];
-
-  const pagination = patients.length <= 10 ? false : {};
-
-  return (
-    <>
-      <Table
-        pagination={pagination}
-        className='accent-header'
-        rowKey='id'
-        dataSource={patients}
-        columns={columns}
-      />
-
-      <Modal
-        visible={visibility}
-        footer={null}
-        onCancel={closeModal}
-        title={<h3 className='title'>Add patient</h3>}
-      >
-        <PatientForm
-          submitText='Update patient'
-          onCancel={closeModal}
-          onSubmit={onEditPatient}
-          patient={patient}
-        />
-      </Modal>
-    </>
-  );
+  return <Table pagination={pagination} rowKey='id' columns={columns} dataSource={staffs} />;
 };
 
 export default StaffPage;
