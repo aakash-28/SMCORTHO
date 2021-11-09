@@ -25,7 +25,7 @@ type Props = {
   data?: INotification[];
 };
 
-const homeRoute = 'vertical/default-dashboard';
+const homeRoute = 'patient/patientdashboard';
 
 const Notifications = ({ data = defaultNotifications }: Props) => {
   const [notifications, setNotifications] = useState<INotification[]>([]);

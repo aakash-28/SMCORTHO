@@ -113,7 +113,7 @@ const CalendarComp = () => {
     
     <div className='container calendarviewcard'>
       <div className='row'>
-        <Card title='Doctors Schedule' className=' col-md-8 calendarcard'>
+        <Card title='Doctors Schedule' className=' col-md-8 calendarcard2'>
           <FullCalendar
             eventClick={handleEventClick}
             events={events}

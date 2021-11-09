@@ -250,10 +250,6 @@ export const defaultRoutes: IRoute[] = [
     component: EventsCalendarPage
   },
   {
-    path: 'patient',
-    component: PatientDash
-  },
-  {
     path: 'appointmenthistory',
     component: AppointmentHistory
   },

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
-import BaseLayout from '../base/BaseLayout';
+import BaseLayout2 from '../base2/BaseLayout2';
 
 import Navbar from '../components/navbar/Navbar';
 
@@ -11,10 +11,10 @@ import Menu from '../components/menu/Menu';
 import Search from '../components/search/Search';
 import NavLoader from '../components/navbar/NavLoader';
 import AddPatient from '../components/patients/AddPatient';
-
+import Logo from '../components/logo/Logo';
 import Actions from '../../pages/medic/components/actions/Actions';
 import { toggleSidebar } from '../../redux/settings/actions';
-
+import LogoSvg from './../../assets/img/logo.png';
 import { useSearchData } from '../../hooks/useSearchData';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,7 +25,10 @@ import './PatientLayout.scss';
 type Props = {
   children: any;
 };
-
+const logoStyle = {
+  height: '100px',
+  width: '150px',
+};
 const PatientLayout = ({ children }: Props) => {
   const dispatch = useDispatch();
 
@@ -37,7 +40,7 @@ const PatientLayout = ({ children }: Props) => {
   const onSidebarToggle = () => dispatch(toggleSidebar());
 
   const [menuData, setMenuData] = useState([]);
-
+  
   useEffect(() => {
     // API call here
     async function fetchMenuData() {
@@ -61,7 +64,7 @@ const PatientLayout = ({ children }: Props) => {
         <span />
       </button>
 
-      <Search layout='vertical' data={searchData} />
+      <Logo src={LogoSvg} style={logoStyle}/>
 
       <Actions />
 
@@ -70,9 +73,9 @@ const PatientLayout = ({ children }: Props) => {
   );
   return (
     <>
-      <BaseLayout orientation='vertical' nav={nav}>
+      <BaseLayout2 orientation='vertical' nav={nav}>
         {children}
-      </BaseLayout>
+      </BaseLayout2>
     </>
   );
 };

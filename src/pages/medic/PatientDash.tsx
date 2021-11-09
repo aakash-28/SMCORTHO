@@ -20,6 +20,7 @@ import {
 } from '@ant-design/icons/lib';
 import CalendarComp from './components/CalendarComp'
 import './css/patient.css'
+
 const { Item } = Form;
 const { RangePicker } = DatePicker;
 const rules = {
@@ -104,12 +105,12 @@ const handleChange = (maxCount: number, setter: (val) => void) => (event) => {
 };
 
 const pageData: IPageData = {
-  title: 'Patient Dashboard',
+  title: '',
   fulFilled: true,
   breadcrumbs: [
     {
       title: 'Home',
-      route: 'default-dashboard'
+      route: '/patient/patientdashboard'
     }
   ]
 };
@@ -118,14 +119,14 @@ const PatientDash = () => {
   usePageData(pageData);
   return (
     <>
-    <div className='container'>
+    <div className='container patientdasharea'>
       <div className='row'>
-        <div className='col-md-6'>
+        <div className='col-md-6 appointmentform'>
           <Card title='New Appointment' className='mb-0'>
             <FormWithMessages />
           </Card>
         </div>
-        <div className='col-md-6'>
+        <div className='col-md-6 patientcalendar'>
             <CalendarComp />
         </div>
       </div>
