@@ -82,7 +82,7 @@ const data = [
   },
   {
     key: '4',
-    name: 'Nurse Rajni',
+    name: 'Jaskaran (Nurse) ',
     time: '1810',
     address: 'Created a new patient.'
   }

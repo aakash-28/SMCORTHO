@@ -20,11 +20,11 @@ const pageData: IPageData = {
       route: 'default-dashboard'
     },
     {
-      title: 'Doctors',
+      title: 'Patients',
       route: 'default-dashboard'
     },
     {
-      title: 'Liam Jouns'
+      title: 'Rishabh Bajpai'
     }
   ]
 };
@@ -118,7 +118,7 @@ const PatientTimeline = () => (
         </span>
       </div>
     </Timeline.Item>
-{/* 
+    {/* 
     <Timeline.Item color='pink'>
       <div className='d-flex flex-column'>
         <h4 className='m-0'>Operation</h4>
@@ -162,7 +162,7 @@ const PatientTimeline = () => (
 );
 
 const PatientProfilePage = () => {
-  const { patient } = useGetPatient('Liam');
+  const { patient } = useGetPatient('Rishabh');
   const billings = useGetBillings();
 
   usePageData(pageData);

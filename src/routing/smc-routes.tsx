@@ -7,6 +7,9 @@ import ActivityLog from "../pages/logging/ActivityLog";
 import PatientProfilePage from "../pages/patients/PatientProfilePage";
 import PatientsPage from "../pages/patients/Patients";
 import InvoicePage from "../pages/payment/InvoicePage";
+import SmcSettings from "../pages/settings/SmcSettings";
+import SmcStaffProfilePage from "../pages/settings/SmcStaffProfilePage";
+import StatisticsPage from "../pages/statistics/StatisticsPage";
 
 export const smcRoutes: IRoute[] = [
     {
@@ -40,5 +43,17 @@ export const smcRoutes: IRoute[] = [
     {
       path: 'patient-profile',
       component: PatientProfilePage
+    },
+    {
+      path: 'statistics',
+      component: StatisticsPage
+    },
+    {
+      path: 'settings',
+      component: SmcSettings
+    },
+    {
+      path: 'staff-profile',
+      component: SmcStaffProfilePage
     }
 ];

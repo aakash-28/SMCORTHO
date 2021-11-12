@@ -56,7 +56,7 @@ const SMCLayout = ({ children }: Props) => {
     <Navbar
       boxed={true}
       color='#ffffff'
-      background='#000000'
+      background='#ffffff'
       orientation='horizontal'
     >
       <button className='no-style navbar-toggle d-lg-none' onClick={onSidebarToggle}>
@@ -64,8 +64,8 @@ const SMCLayout = ({ children }: Props) => {
         <span />
         <span />
       </button>
-
-      <Search layout='vertical' data={searchData} />
+{/* 
+      <Search layout='vertical' data={searchData} /> */}
 
       <Actions />
 
@@ -92,7 +92,7 @@ const SMCLayout = ({ children }: Props) => {
       />
 
       <Menu className='assistant-menu' orientation='vertical'>
-        <NavLink className='link' to='/vertical/settings' activeClassName='active' replace>
+        <NavLink className='link' to='/smc/settings' activeClassName='active' replace>
           <span className='link-icon icofont icofont-ui-settings' />
 
           <span className='link-text'>Settings</span>

@@ -176,7 +176,7 @@ const AppointmentPage = () => {
         </div>
         <div className='col-md-6 col-sm-12'>
             <Button block type='primary' htmlType='submit'>
-            Generate PDF
+            Save
             </Button>
         </div>
       </div>

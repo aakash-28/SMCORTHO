@@ -3,10 +3,9 @@ import { Avatar, Dropdown, Menu } from 'antd';
 import { NavLink } from 'react-router-dom';
 
 const accountItems = [
-  { text: 'Edit account', icon: 'icofont-ui-home', route: '/vertical/edit-account' },
-  { text: 'User profile', icon: 'icofont-ui-user', route: '/vertical/user-profile' },
-  { text: 'Calendar', icon: 'icofont-ui-calendar', route: '/vertical/events-calendar' },
-  { text: 'Settings', icon: 'icofont-ui-settings', route: '/vertical/settings' },
+  { text: 'User profile', icon: 'icofont-ui-user', route: '/smc/staff-profile' },
+  { text: 'Calendar', icon: 'icofont-ui-calendar', route: '/smc/calendar' },
+  { text: 'Settings', icon: 'icofont-ui-settings', route: '/smc/settings' },
   { text: 'Log Out', icon: 'icofont-logout', route: '/public/sign-in' }
 ];
 
@@ -30,7 +29,7 @@ const SettingsDropdown = () => {
         <Avatar
           size={40}
           className='mr-1'
-          src={`${window.location.origin}/content/user-40-2.jpg`}
+          src={`${window.location.origin}/content/drarvind.png  `}
         />
         <span className='icofont-simple-down' />
       </div>
