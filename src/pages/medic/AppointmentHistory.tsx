@@ -402,7 +402,10 @@ const AppointmentHistory = () => {
                 Invoice
               </Button>
               <Button className='text-center' block>
-                Lab Results
+                X-ray/Lab Results
+              </Button>
+              <Button className='text-center' block>
+                Other investigations
               </Button>
             </div>
           </Card>

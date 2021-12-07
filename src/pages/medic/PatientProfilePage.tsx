@@ -39,15 +39,23 @@ const ProfileForm = ({ patient }) => {
       <FormItem label='Full name'>
         <Input defaultValue='Abhishek Prakash' placeholder='Full name' />
       </FormItem>
-
-      <FormItem label='Id'>
-        <Input disabled defaultValue={values.id} placeholder='Id' />
+      <div className='row'>
+        <div className='col-md-6 col-sm-12'>
+          <FormItem label='Id'>
+            <Input disabled defaultValue={values.id} placeholder='Id' />
+          </FormItem>
+        </div>
+        <div className='col-md-6 col-sm-12'>
+        <FormItem label='Phone'>
+        <Input defaultValue='+91 9005352552' placeholder='Phone' />
       </FormItem>
+      </div>
+      </div>
 
       <div className='row'>
         <div className='col-md-6 col-sm-12'>
-          <FormItem label='Age'>
-            <Input defaultValue={values.age} placeholder='Age' />
+          <FormItem label='Date of Birth'>
+            <Input defaultValue={values.age} placeholder='D.O.B.' />
           </FormItem>
         </div>
         <div className='col-md-6 col-sm-12'>
@@ -60,8 +68,8 @@ const ProfileForm = ({ patient }) => {
         </div>
       </div>
 
-      <FormItem label='Phone'>
-        <Input defaultValue='+91 9005352552' placeholder='Phone' />
+      <FormItem label='Email'>
+        <Input defaultValue='aravindr2002@gmail.com' placeholder='email' />
       </FormItem>
 
       <FormItem label='Address'>
