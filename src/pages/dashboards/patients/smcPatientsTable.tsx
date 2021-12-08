@@ -28,7 +28,7 @@ const PatientImg = ({ img }: PatientsImgProps) => {
   return <Avatar size={40} src={`${window.location.origin}/${img}`} />;
 };
 
-const smcPatientsTable = ({
+const SmcPatientsTable = ({
   patients,
   onEditPatient = () => null,
   onDeletePatient = () => null
@@ -146,12 +146,12 @@ const smcPatientsTable = ({
     }
   ];
 
-  const pagination = patients.length <= 10 ? false : {};
+  // const pagination = patients.length <= 10 ? false : {};
 
   return (
     <>
       <Table
-        pagination={pagination}
+        // pagination={pagination}
         className='accent-header'
         rowKey='id'
         dataSource={patients}
@@ -175,4 +175,4 @@ const smcPatientsTable = ({
   );
 };
 
-export default smcPatientsTable;
+export default SmcPatientsTable;

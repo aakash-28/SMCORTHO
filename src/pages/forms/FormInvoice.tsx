@@ -83,52 +83,101 @@ const FormInvoice = () => {
         </Form>
       </Card>
 
-      <Card title='Prescription' className='mb-0'>
-        <Form layout='vertical'>
+      {/* <Card title='Prescription' className='mb-0'> */}
+      <Card className='mb-0'>
+        <Form layout='horizontal'>
         {inputList.map((x, i) => {
         return (
-          <div className='row'>
-          
-          <div className='col-md-6 col-sm-12'>
-            <Form.Item label='Medicine'>
-              <Input
-                name='medicine'
-                placeholder='Medicine'
-                className='mb-md-0 mb-4'
-                value={x.medicine}
-                onChange={e => handleInputChange(e, i)}
-              />
-              </Form.Item>
-            </div>
-            <div className='col-md-1 col-sm-12'>
-            <Form.Item label='Quantity'>
-              <Input
-                name='quantity'
-                placeholder='0'
-                className='mb-md-0 mb-4'
-                value={x.quantity}
-                onChange={e => handleInputChange(e, i)}
-              />
-              </Form.Item>
-            </div>
-            <div className='col-md-1 col-sm-12'  style={{marginTop:'2.5%'}}>
-              <Button shape='circle' block type='primary' htmlType='submit' onClick={handleRemoveClick}>
-                <span className='icofont icofont-minus' />
-              </Button>
-            </div>
+          <div>
+            <div className='row'>
+            
+              <div className='col-md-6 col-sm-12'>
+                <Form.Item label='Consultation Charges'>
+                  <Input
+                    placeholder='0'
+                    className='mb-md-0 mb-4'
+                    value={x.quantity}
+                    onChange={e => handleInputChange(e, i)}
+                  />
+                </Form.Item>
+              </div>
+                {/* <div className='col-md-1 col-sm-12'>
+                  <Button shape='circle' block type='primary' htmlType='submit' onClick={handleRemoveClick}>
+                    <span className='icofont icofont-minus' />
+                  </Button>
+                </div> */}
           </div>
+          
+          <div className='row'>
+            
+            <div className='col-md-6 col-sm-12'>
+              <Form.Item label='Treatment Charges'>
+                <Input
+                  placeholder='0'
+                  className='mb-md-0 mb-4'
+                  value={x.quantity}
+                  onChange={e => handleInputChange(e, i)}
+                />
+              </Form.Item>
+            </div>
+              {/* <div className='col-md-1 col-sm-12'>
+                <Button shape='circle' block type='primary' htmlType='submit' onClick={handleRemoveClick}>
+                  <span className='icofont icofont-minus' />
+                </Button>
+              </div> */}
+          </div>
+
+          <div className='row'>
+            
+            <div className='col-md-6 col-sm-12'>
+              <Form.Item label='X-Ray Charges'>
+                <Input
+                  placeholder='0'
+                  className='mb-md-0 mb-4'
+                  value={x.quantity}
+                  onChange={e => handleInputChange(e, i)}
+                />
+              </Form.Item>
+            </div>
+              {/* <div className='col-md-1 col-sm-12'>
+                <Button shape='circle' block type='primary' htmlType='submit' onClick={handleRemoveClick}>
+                  <span className='icofont icofont-minus' />
+                </Button>
+              </div> */}
+          </div>
+
+          <div className='row'>
+            
+            <div className='col-md-6 col-sm-12'>
+              <Form.Item label='Other Charges'>
+                <Input
+                  placeholder='0'
+                  className='mb-md-0 mb-4'
+                  value={x.quantity}
+                  onChange={e => handleInputChange(e, i)}
+                />
+              </Form.Item>
+              <Input.TextArea rows={4} placeholder='Other charges details' />
+            </div>
+              {/* <div className='col-md-1 col-sm-12'>
+                <Button shape='circle' block type='primary' htmlType='submit' onClick={handleRemoveClick}>
+                  <span className='icofont icofont-minus' />
+                </Button>
+              </div> */}
+          </div>
+        </div>
           );
         })}
         </Form>
       </Card>
       
-      <div className='row'>
+      {/* <div className='row'>
         <div className='col-md-1 col-sm-12'>
               <Button shape='circle' block type='primary' htmlType='submit' onClick={handleAddClick}>
                 <span className='icofont icofont-plus' />
               </Button>
         </div>
-      </div>
+      </div> */}
 
       <Card style={{overflow:'hidden'}}>
       <div className='row' style={{float:'right'}}>

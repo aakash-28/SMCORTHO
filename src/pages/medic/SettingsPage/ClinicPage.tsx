@@ -65,6 +65,9 @@ const ClinicPage = () => {
           <Form.Item label='Doctor Titles'>
             <Input disabled={disabled} placeholder='<Title>' />
           </Form.Item>
+          <Form.Item label='Doctor Introduction'>
+            <Input.TextArea disabled={disabled} placeholder='Doctor Introduction' />
+          </Form.Item>
         </Form>
       </Card>
 

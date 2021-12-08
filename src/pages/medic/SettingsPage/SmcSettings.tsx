@@ -43,7 +43,7 @@ const pageData: IPageData = {
 const SmcSettings = () => {
   usePageData(pageData);
 
-  const [noTitleKey, setNoTitleKey] = useState('app');
+  const [noTitleKey, setNoTitleKey] = useState('clinic');
   const onTabChange = (setter: (val: string) => void) => (key: string) => {
     setter(key);
   };

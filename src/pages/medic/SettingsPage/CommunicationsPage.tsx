@@ -57,7 +57,7 @@ const CommunicationsPage = () => {
         </div>
       </Card>
 
-      <Card title='For Anniversary:'>
+      <Card title='For Birthday:'>
         <div className='row'>
           <div className='col-md-3 col-sm-12'><h5>SMS: </h5></div>
           <div className='col-md-3 col-sm-12' style={{marginTop:"2%"}}><Checkbox disabled={disabled}/></div>

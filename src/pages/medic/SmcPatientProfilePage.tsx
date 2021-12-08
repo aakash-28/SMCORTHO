@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Form, Input, Select, Timeline } from 'antd';
+import { Button, Card, Form, Input, Select, Timeline, DatePicker } from 'antd';
 
 import { useFormik } from 'formik';
 
@@ -17,11 +17,11 @@ const pageData: IPageData = {
   fulFilled: true,
   breadcrumbs: [
     {
-      title: 'Medicine',
+      title: 'SMC',
       route: 'default-dashboard'
     },
     {
-      title: 'Doctors',
+      title: 'Patients',
       route: 'default-dashboard'
     },
     {
@@ -32,6 +32,10 @@ const pageData: IPageData = {
 
 const FormItem = Form.Item;
 const Option = Select.Option;
+
+function onChange(date, dateString) {
+  console.log(date, dateString);
+}
 
 const ProfileForm = ({ patient }) => {
   const { values } = useFormik({
@@ -45,14 +49,27 @@ const ProfileForm = ({ patient }) => {
         <Input defaultValue={values.fullName} placeholder='Full name' />
       </FormItem>
 
-      <FormItem label='Id'>
-        <Input defaultValue={values.id} placeholder='Id' />
+      <div className='row'>
+        <div className='col-md-6 col-sm-12'>
+          <FormItem label='Id'>
+            <Input defaultValue={values.id} placeholder='Id' />
+          </FormItem>
+        </div>
+        <div className='col-md-6 col-sm-12'>
+          <FormItem label='Phone'>
+            <Input defaultValue={values.phone} placeholder='Phone' />
+          </FormItem>
+        </div>
+      </div>
+
+      <FormItem label='Email ID'>
+        <Input defaultValue={values.email} placeholder='Email ID' />
       </FormItem>
 
       <div className='row'>
         <div className='col-md-6 col-sm-12'>
-          <FormItem label='Age'>
-            <Input defaultValue={values.age} placeholder='Age' />
+          <FormItem label='Date of Birth'>
+            <DatePicker onChange = {onChange} format = {"DD-MM-YYYY"}/>
           </FormItem>
         </div>
         <div className='col-md-6 col-sm-12'>
@@ -64,10 +81,6 @@ const ProfileForm = ({ patient }) => {
           </FormItem>
         </div>
       </div>
-
-      <FormItem label='Phone'>
-        <Input defaultValue={values.phone} placeholder='Phone' />
-      </FormItem>
 
       <FormItem label='Address'>
         <Input.TextArea rows={4} defaultValue={values.address} placeholder='Address' />
