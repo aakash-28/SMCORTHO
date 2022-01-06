@@ -7,6 +7,7 @@ import PatientDash from "../pages/medic/PatientDash";
 import AppointmentHistory from "../pages/medic/AppointmentHistory";
 import Statistics from "../pages/medic/Statistics";
 import PatientProfilePage from "../pages/medic/PatientProfilePage";
+import FormPrescription from "../pages/medic/FormPrescription";
 export const smcRoutes: IRoute[] = [
     {
       path: 'patients',
@@ -39,5 +40,9 @@ export const smcRoutes: IRoute[] = [
     {
       path: 'profile',
       component: PatientProfilePage
+    },
+    {
+      path: 'prescription',
+      component: FormPrescription
     },
 ];
