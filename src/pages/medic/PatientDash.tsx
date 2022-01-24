@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import Axios from 'axios';
 import { Button, Card, Form, Input, DatePicker, TimePicker } from 'antd';
 import { Rule } from 'antd/es/form';
 import {
@@ -41,9 +41,6 @@ const formItemLayout = {
   }
 };
 
-
-
-
 const FormWithMessages = () => {
 const [secondChar, setSecondChar] = useState(0);
 
@@ -55,35 +52,79 @@ const handleChange = (maxCount: number, setter: (val) => void) => (event) => {
 
   const resetForm = () => form.resetFields();
 
+  const url="https://eae63o4uu4.execute-api.ap-south-1.amazonaws.com/Prod/appointment"
+  const [data,setData]=useState({
+    patientID:"",
+    name:"",
+    email:"",
+    date:"",
+    notes:""
+  })
+  // const [datedata,setDatedata]=useState({
+  //   date:""
+  // })
+  
+function submit(e){
+  e.preventDefault()
+  Axios.post(url,{
+    patientID:"SMCtest4",
+    name:data.name,
+    email:data.email,
+    date:data.date,
+    notes:data.notes
+  })
+  .then(res=>{
+    console.log(res.data)
+  })
+}
+
+  function handle(e){
+    const newdata={...data}
+    newdata[e.target.id]=e.target.value
+    setData(newdata)
+  }
+  function onChange(date, dateString) {
+    console.log(date, dateString);
+    const newdata={...data}
+    newdata["date"]=dateString
+    setData(newdata)
+  }
   return (
-            <Form form={form} layout='vertical'>
+            <Form form={form} layout='vertical' >
               <Item
                 label='Patient Name'
-                name='First name'
+                name='name'
                 rules={[{ ...rules.required, message: 'First name is required' }]}
               >
-                <Input suffix={<IdcardOutlined />} placeholder='Patient Name' />
+                <Input id='name' onChange={(e)=>handle(e)} value={data.name} suffix={<IdcardOutlined  />} placeholder='Patient Name' />
               </Item>
 
               <Item
                 label='Email'
-                name='Email'
+                name='email'
                 rules={[
                   { ...rules.required, message: 'Email is required' },
                   { ...rules.email, message: 'Enter valid email' }
                 ]}
               >
-                <Input suffix={<MailOutlined />} placeholder='Email' />
+                <Input id='email' onChange={(e)=>handle(e)} value={data.email} suffix={<MailOutlined />} placeholder='Email' />
               </Item>
 
+              {/* <Item 
+              name="date" 
+              label="Pick Date and Time">
+                <Input  type='date'
+                 id='date' onChange={(e)=>handle(e)} value={data.date} />
+              </Item> */}
               <Item name="date-time-picker" label="Pick Date and Time" {...config}>
-                <DatePicker showTime format="YYYY-MM-DD HH:mm" />
+                 <DatePicker id='date'  onChange={(date, dateString) => onChange(date, dateString)} showTime format="YYYY-MM-DD HH:mm" />
               </Item>
               <Item name="notes-taker" label="Notes for doctor">
                       <Input
                         placeholder='Notes (Max. 300 Char)'
                         maxLength={300}
-                        onChange={handleChange(300, setSecondChar)}
+                        id='notes'
+                        onChange={(e)=>handle(e)} value={data.notes}
                         prefix={<span style={{ color: 'rgba(0,0,0,.2)' }}>{secondChar || 0}</span>}
                         suffix={<EditOutlined />}
                       />
@@ -95,7 +136,7 @@ const handleChange = (maxCount: number, setter: (val) => void) => (event) => {
                     Reset form
                   </Button>
 
-                  <Button type='primary' icon={<SendOutlined />}>
+                  <Button type='primary' onClick={(e)=>submit(e)} icon={<SendOutlined/>}>
                     Create Appointment
                   </Button>
               </div>
