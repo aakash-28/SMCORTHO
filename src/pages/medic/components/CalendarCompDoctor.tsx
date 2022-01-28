@@ -77,7 +77,7 @@ async function handleDatesSet(data) {
     
     <div className='container calendarviewcard'>
       <div className='row'>
-        <Card title='Doctors Schedule' className=' col-md-8 calendarcard2'>
+        <Card className=' col-md-8 calendarcard2'>
           <FullCalendar
             ref={calendarRef}
             eventClick={handleEventClick}

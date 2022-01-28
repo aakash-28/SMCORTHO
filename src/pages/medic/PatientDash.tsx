@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import Axios from 'axios';
 import { Button, Card, Form, Input, DatePicker, TimePicker } from 'antd';
 import { Rule } from 'antd/es/form';
@@ -51,30 +51,38 @@ const handleChange = (maxCount: number, setter: (val) => void) => (event) => {
   const [form] = Form.useForm();
 
   const resetForm = () => form.resetFields();
-
+  const calendarRef = useRef(null);
   const url="https://eae63o4uu4.execute-api.ap-south-1.amazonaws.com/Prod/appointment"
   const [data,setData]=useState({
     patientID:"",
     name:"",
     email:"",
-    date:"",
-    notes:""
+    start:"",
+    end:"",
+    notes:"",
+    moment:""
   })
-  // const [datedata,setDatedata]=useState({
-  //   date:""
-  // })
   
+
 function submit(e){
   e.preventDefault()
   Axios.post(url,{
-    patientID:"SMCtest4",
+    patientID:"SMCTest2",
     name:data.name,
     email:data.email,
-    date:data.date,
-    notes:data.notes
+    start:data.start,
+    end:data.end,
+    notes:data.notes,
+    moment:data.moment
   })
   .then(res=>{
     console.log(res.data)
+  //   let calendarApi=calendarRef.current.getApi();
+  //   calendarApi.addEvent({
+  //   start:res.data.start,
+  //   end:res.data.end,
+  //   title:"Occupied",
+  // });
   })
 }
 
@@ -83,11 +91,26 @@ function submit(e){
     newdata[e.target.id]=e.target.value
     setData(newdata)
   }
-  function onChange(date, dateString) {
-    console.log(date, dateString);
+  // function onChange(date, dateString) {
+  //   console.log(date, dateString);
+  //   const newdata={...data}
+  //   newdata["date"]=dateString
+  //   setData(newdata)
+  // }
+
+  function onChange(value, dateString) {
+    console.log('Selected Time: ', value);
+    console.log('Formatted Selected Time: ', dateString);
+    console.log('Time   1: ', dateString[0]);
+    console.log('Time   2: ', value[0].toDate());
     const newdata={...data}
-    newdata["date"]=dateString
+    newdata["start"]=value[0].toDate()
+    newdata["end"]=value[1].toDate()
+    newdata["moment"]=value
     setData(newdata)
+  }
+  function onOk(value) {
+    console.log('onOk: ', value);
   }
   return (
             <Form form={form} layout='vertical' >
@@ -116,8 +139,18 @@ function submit(e){
                 <Input  type='date'
                  id='date' onChange={(e)=>handle(e)} value={data.date} />
               </Item> */}
-              <Item name="date-time-picker" label="Pick Date and Time" {...config}>
+
+              {/* <Item name="date-time-picker" label="Pick Date and Time" {...config}>
                  <DatePicker id='date'  onChange={(date, dateString) => onChange(date, dateString)} showTime format="YYYY-MM-DD HH:mm" />
+              </Item> */}
+
+              <Item name="date-time-picker" label="Pick Date and Time" >
+                <RangePicker
+                  showTime={{ format: 'HH:mm' }}
+                  format="YYYY-MM-DD HH:mm"
+                  onChange={(value, dateString) => onChange(value, dateString)}
+                  onOk={onOk}
+                />
               </Item>
               <Item name="notes-taker" label="Notes for doctor">
                       <Input
@@ -136,7 +169,9 @@ function submit(e){
                     Reset form
                   </Button>
 
-                  <Button type='primary' onClick={(e)=>submit(e)} icon={<SendOutlined/>}>
+                  <Button type='primary' 
+                  onClick={(e)=>submit(e)} 
+                  icon={<SendOutlined/>}>
                     Create Appointment
                   </Button>
               </div>
