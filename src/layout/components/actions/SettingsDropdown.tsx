@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useEffect,useState,useContext} from 'react';
+import { AccountContext } from '../../../Account';
 import { Avatar, Dropdown, Menu } from 'antd';
 import { NavLink } from 'react-router-dom';
 
@@ -7,10 +8,22 @@ const accountItems = [
   { text: 'User profile', icon: 'icofont-ui-user', route: '/vertical/user-profile' },
   { text: 'Calendar', icon: 'icofont-ui-calendar', route: '/vertical/events-calendar' },
   { text: 'Settings', icon: 'icofont-ui-settings', route: '/vertical/settings' },
-  { text: 'Log Out', icon: 'icofont-logout', route: '/public/sign-in' }
 ];
 
 const SettingsDropdown = () => {
+
+  const [status, setStatus] = useState(false);
+  
+  const { getSession, logout } = useContext(AccountContext);
+
+  useEffect(() => {
+    getSession().then((session) => {
+      console.log("Session: ", session);
+      setStatus(true);
+    });
+  }, []);
+
+
   const accountMenu = (
     <Menu style={{ minWidth: '180px' }}>
       {accountItems.map((item, index) => (
@@ -21,6 +34,12 @@ const SettingsDropdown = () => {
           </NavLink>
         </Menu.Item>
       ))}
+      <Menu.Item className='action-item'>
+          <NavLink onClick={logout} className='d-flex w-100' to='/public/sign-in' replace>
+            <span className={`icon mr-3 icofont-logout`} />
+            <span className='text'>Log Out</span>
+          </NavLink>
+        </Menu.Item>
     </Menu>
   );
 

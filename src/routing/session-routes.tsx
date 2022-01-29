@@ -2,8 +2,8 @@ import { IRoute } from '../interfaces/routing';
 
 import NotFound from '../pages/sessions/404';
 import InternalError from '../pages/sessions/500';
-import SignIn from '../pages/sessions/Sign-in';
-import SignUp from '../pages/sessions/Sign-up';
+import LoginPage from '../pages/sessions/LoginPage';
+import SignupPage from '../pages/sessions/SignupPage';
 
 export const sessionRoutes: IRoute[] = [
   {
@@ -16,10 +16,10 @@ export const sessionRoutes: IRoute[] = [
   },
   {
     path: 'sign-in',
-    component: SignIn
+    component: LoginPage
   },
   {
     path: 'sign-up',
-    component: SignUp
+    component: SignupPage
   }
 ];

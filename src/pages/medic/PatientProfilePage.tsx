@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Card, Form, Input, Select, Timeline } from 'antd';
 
 import { useFormik } from 'formik';
@@ -10,6 +10,8 @@ import { useGetPatient } from '../../hooks/useGetPatient';
 import { useGetBillings } from '../../hooks/useGetBillings';
 import ImageLoader from '../../layout/components/patients/ImageLoader';
 import PatientBillingTable from './components/PatientBillingTable';
+import { AccountContext } from '../../Account';
+import ChangePassword from './ChangePassword';
 
 const pageData: IPageData = {
   title: 'Patient profile page',
@@ -24,6 +26,9 @@ const pageData: IPageData = {
     }
   ]
 };
+
+
+
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -41,7 +46,7 @@ const ProfileForm = ({ patient }) => {
       </FormItem>
       <div className='row'>
         <div className='col-md-6 col-sm-12'>
-          <FormItem label='Id'>
+          <FormItem label='Patient ID'>
             <Input disabled defaultValue={values.id} placeholder='Id' />
           </FormItem>
         </div>
@@ -63,10 +68,12 @@ const ProfileForm = ({ patient }) => {
             <Select defaultValue={values.gender} placeholder='Gender'>
               <Option value='male'>Male</Option>
               <Option value='female'>Female</Option>
+              <Option value='other'>Other</Option>
             </Select>
           </FormItem>
         </div>
       </div>
+
 
       <FormItem label='Email'>
         <Input defaultValue='aravindr2002@gmail.com' placeholder='email' />
@@ -79,6 +86,7 @@ const ProfileForm = ({ patient }) => {
       <FormItem label='Last visit'>
         <Input disabled defaultValue={values.lastVisit} placeholder='Last visit' readOnly />
       </FormItem>
+      
     </Form>
   );
 };
@@ -115,46 +123,6 @@ const PatientTimeline = () => (
         </span>
       </div>
     </Timeline.Item>
-{/* 
-    <Timeline.Item color='pink'>
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Operation</h4>
-        <span className='text-base text-color-100'>15h ago</span>
-        <span className='text-base'>
-          Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
-          ut id elit.
-        </span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item color='blue'>
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>New patient</h4>
-        <span className='text-base text-color-100'>Jul 10</span>
-        <span className='text-base'>Lorem ipsum dolor sit.</span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item color='red'>
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Examination</h4>
-        <span className='text-base text-color-100'>Jul 11</span>
-        <span className='text-base'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur nam nisi veniam.
-        </span>
-      </div>
-    </Timeline.Item>
-
-    <Timeline.Item color='green'>
-      <div className='d-flex flex-column'>
-        <h4 className='m-0'>Re-Examination</h4>
-        <span className='text-base text-color-100'>Jul 25</span>
-        <span className='text-base'>
-          Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula
-          ut id elit.
-        </span>
-      </div>
-    </Timeline.Item> */}
   </Timeline>
 );
 
@@ -162,10 +130,19 @@ const PatientProfilePage = () => {
   const { patient } = useGetPatient('Liam');
   const billings = useGetBillings();
 
+  const {getSession} = useContext(AccountContext);
+  const [loggedin,setLoggedIn]=useState(false);  
+
+  useEffect(() =>{
+    getSession().then(()=>{
+      setLoggedIn(true);
+    })
+  },[])
+
   usePageData(pageData);
 
-  return (
-    patient && (
+  return (<>
+    {loggedin && (
       <>
         <div className='row mb-4'>
           <div className='col-md-6 col-sm-12'>
@@ -190,8 +167,8 @@ const PatientProfilePage = () => {
         <Card title='Billings' className='mb-0'>
           <PatientBillingTable billings={billings} />
         </Card>
-      </>
-    )
+        </>
+    )}</>
   );
 };
 

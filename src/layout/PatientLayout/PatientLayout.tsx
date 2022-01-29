@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
-
 import BaseLayout2 from '../base2/BaseLayout2';
-
 import Navbar from '../components/navbar/Navbar';
-
 import Menu from '../components/menu/Menu';
 import Search from '../components/search/Search';
 import NavLoader from '../components/navbar/NavLoader';

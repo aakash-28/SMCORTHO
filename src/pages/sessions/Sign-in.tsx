@@ -1,24 +1,39 @@
-import React from 'react';
-
+import React,{useState,useContext} from 'react';
+import { AccountContext } from '../../Account';
 import { Button, Form, Input, Switch } from 'antd';
 import { LoginOutlined } from '@ant-design/icons/lib';
-
 import PublicLayout from '../../layout/public/Public';
 import { Link } from 'react-router-dom';
 import { useForm } from 'antd/es/form/Form';
 import { navigateHome } from '../../utils/naviagate-home';
+import UserPool from '../../UserPool';
+import {CognitoUser,AuthenticationDetails} from 'amazon-cognito-identity-js';
+import { Account } from '../../Account';
+
+
 
 const { Item } = Form;
 
 const SignIn = () => {
+  const { authenticate } = useContext(AccountContext);
   const [form] = useForm();
 
-  const login = () => {
-    form
-      .validateFields()
-      .then(() => navigateHome())
-      .catch(() => null);
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    authenticate(email, password)
+    .then((data) => {
+      console.log("Logged in!", data)
+      navigateHome()
+      
+    })
+    .catch((err) => {
+      console.error("Failed to login", err);
+    });
   };
+
 
   return (
     <PublicLayout bgImg={`${window.origin}/content/login-page.jpg`}>
@@ -28,10 +43,17 @@ const SignIn = () => {
 
       <Form form={form} layout='vertical' className='mb-4'>
         <Item name='login' rules={[{ required: true, message: <></> }]}>
-          <Input placeholder='Login' />
+          <Input
+          value={email}
+          placeholder='Login'
+          onChange={(event)=>setEmail(event.target.value)}  />
         </Item>
         <Item name='password' rules={[{ required: true, message: <></> }]}>
-          <Input placeholder='Password' type='password' />
+          <Input
+          value={password}
+          placeholder='Password' 
+          type='password'
+          onChange={(event)=>setPassword(event.target.value)}  />
         </Item>
 
         <div className='d-flex align-items-center mb-4'>
@@ -41,7 +63,7 @@ const SignIn = () => {
         <Button
           block={false}
           type='primary'
-          onClick={login}
+          onClick={onSubmit}
           htmlType='submit'
           icon={<LoginOutlined style={{ fontSize: '1.3rem' }} />}
         >
@@ -57,6 +79,7 @@ const SignIn = () => {
         Don't have an account? <Link to='sign-up'>Sign up!</Link>
       </p>
     </PublicLayout>
+    
   );
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useContext,useState} from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -13,6 +13,8 @@ import { useHideLoader } from './hooks/useHideLoader';
 import SMCLayout from './layout/components/smcLayout/SMCLayout';
 import PatientLayout from './layout/PatientLayout/PatientLayout';
 import { smcRoutes } from './routing/smc-routes';
+import { Account,AccountContext } from './Account';
+import { navigateLogin } from './utils/navigate-login';
 
 const Routes = ({ routes, layout = '' }) => (
   <Switch>
@@ -69,47 +71,52 @@ const DefaultRoutes = ({ layout }) => <Routes routes={defaultRoutes} layout={lay
 const SessionRoutes = () => <Routes routes={sessionRoutes} layout='public' />;
 
 const App = () => {
+
+
   useHideLoader();
-
-  return (
-    <Switch>
-      <Route exact path='/'>
-        <Redirect to='/vertical/default-dashboard' />
-      </Route>
-
-      <Route path='/public'>
-        <SessionRoutes />
-      </Route>
-
-      <Route path='/horizontal'>
-        <HorizontalLayout>
-          <DefaultRoutes layout='horizontal' />
-        </HorizontalLayout>
-      </Route>
-
-      <Route path='/vertical'>
-        <VerticalLayout>
-          <DefaultRoutes layout='vertical' />
-        </VerticalLayout>
-      </Route>
-
-      <Route path='/smc'>
-        <SMCLayout>
-          <SMCRoutes />
-        </SMCLayout>
-      </Route>
-
-      <Route path='/patient'>
-        <PatientLayout>
-          <PatientRoutes />
-        </PatientLayout>
-      </Route>
-
-      <Route path='*'>
-        <NotFound />
-      </Route>
-    </Switch>
-  );
+  
+    return (
+      <Account>
+      <Switch>
+        <Route exact path='/'>
+          <Redirect to='/patient/patientdashboard' />
+        </Route>
+  
+        <Route path='/public'>
+          <SessionRoutes />
+        </Route>
+  
+        <Route path='/horizontal'>
+          <HorizontalLayout>
+            <DefaultRoutes layout='horizontal' />
+          </HorizontalLayout>
+        </Route>
+  
+        <Route path='/vertical'>
+          <VerticalLayout>
+            <DefaultRoutes layout='vertical' />
+          </VerticalLayout>
+        </Route>
+  
+        <Route path='/smc'>
+          <SMCLayout>
+            <SMCRoutes />
+          </SMCLayout>
+        </Route>
+  
+        <Route path='/patient'>
+          <PatientLayout>
+            <PatientRoutes />
+          </PatientLayout>
+        </Route>
+  
+        <Route path='*'>
+          <NotFound />
+        </Route>
+      </Switch>
+      </Account>
+    );
+ 
 };
 
 export default App;

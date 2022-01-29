@@ -8,6 +8,7 @@ import AppointmentHistory from "../pages/medic/AppointmentHistory";
 import Statistics from "../pages/medic/Statistics";
 import PatientProfilePage from "../pages/medic/PatientProfilePage";
 import FormPrescription from "../pages/medic/FormPrescription";
+import UpdateCredentials from "../pages/medic/ChangePassword";
 export const smcRoutes: IRoute[] = [
     {
       path: 'patients',
@@ -44,5 +45,9 @@ export const smcRoutes: IRoute[] = [
     {
       path: 'prescription',
       component: FormPrescription
+    },
+    {
+      path: 'updatecredentials',
+      component: UpdateCredentials
     },
 ];

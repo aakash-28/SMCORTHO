@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState,useEffect,useContext} from 'react';
 import Axios from 'axios';
 import { Button, Card, Form, Input, DatePicker, TimePicker } from 'antd';
 import { Rule } from 'antd/es/form';
@@ -18,8 +18,11 @@ import {
   ReloadOutlined,
   SendOutlined
 } from '@ant-design/icons/lib';
-import CalendarComp from './components/CalendarComp'
+import CalendarComp from './components/CalendarComp';
+import { AccountContext } from '../../Account';
+import { navigateLogin } from '../../utils/navigate-login';
 import './css/patient.css'
+import { Session } from 'inspector';
 
 const { Item } = Form;
 const { RangePicker } = DatePicker;
@@ -191,8 +194,11 @@ const pageData: IPageData = {
   ]
 };
 
+
 const PatientDash = () => {
+   
   usePageData(pageData);
+  
   return (
     <>
     <div className='container patientdasharea'>
