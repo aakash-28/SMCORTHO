@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { usePageData } from '../../hooks/usePage';
-import { usePatients } from '../../hooks/usePatients';
+import { useGetPatients } from '../../hooks/useGetPatient';
 
 import PatientsTable from './PatientsTable';
 
@@ -22,14 +22,13 @@ const pageData: IPageData = {
 };
 
 const PatientsPage = () => {
-  const { patients, editPatient, deletePatient } = usePatients();
+
+  const patients = useGetPatients();
   usePageData(pageData);
 
   return (
     <>
       <PatientsTable
-        onDeletePatient={deletePatient}
-        onEditPatient={editPatient}
         patients={patients}
       />
     </>

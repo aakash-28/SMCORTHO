@@ -4,8 +4,20 @@ import { IPatient } from '../interfaces/patient';
 import axios from 'axios';
 
 async function getPatients() {
-  const result = await axios.get('./data/patients.json');
-  return result.data as IPatient[];
+  // const result = await axios.get('./data/patients.json');
+  const result = await axios.get('https://u5vmlblbqk.execute-api.ap-south-1.amazonaws.com/beta/');
+
+  // const [data] = useState({
+  //   id: result.data.patientId,
+  //   name: result.data.name,
+  //   number: string,
+  //   age: number,
+  //   gender: string,
+  //   address: string,
+  //   status?: result.data.title,
+  //   lastVisit?: string;
+  // })
+  return result.data.body as IPatient[];
 }
 
 export function useGetPatients(): IPatient[] {
