@@ -1,4 +1,6 @@
-import { IRoute } from "../interfaces/routing";
+import React from 'react';
+import { IRoute } from '../interfaces/routing';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import AppointmentPage from "../pages/appointment/AppointmentPage";
 import EventsCalendarPage from "../pages/calendar/EventsCalendarPage";
 import FeedbackPage from "../pages/feedback/FeedbackPage";
@@ -11,7 +13,7 @@ import SmcSettings from "../pages/settings/SmcSettings";
 import SmcStaffProfilePage from "../pages/settings/SmcStaffProfilePage";
 import StatisticsPage from "../pages/statistics/StatisticsPage";
 
-export const smcRoutes: IRoute[] = [
+const SMC_ROUTES: IRoute[] = [
     {
       path: 'default',
       component: HomePage
@@ -57,3 +59,20 @@ export const smcRoutes: IRoute[] = [
       component: SmcStaffProfilePage
     }
 ];
+
+export const SMCRoutes = () => (
+  <Switch>
+    {SMC_ROUTES.map((route, index) => (
+      <Route
+        key={index}
+        exact={false}
+        path={`/smc/${route.path}`}
+        component={() => <route.component />}
+      />
+    ))}
+
+    <Route path='*'>
+      <Redirect to='/session/page-404' />
+    </Route>
+  </Switch>
+);

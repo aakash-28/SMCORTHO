@@ -1,11 +1,13 @@
+import React from 'react';
 import { IRoute } from '../interfaces/routing';
+import { Switch, Route } from 'react-router-dom';
 
 import NotFound from '../pages/sessions/404';
 import InternalError from '../pages/sessions/500';
 import SignIn from '../pages/sessions/Sign-in';
 import SignUp from '../pages/sessions/Sign-up';
 
-export const sessionRoutes: IRoute[] = [
+const SESSION_ROUTES: IRoute[] = [
   {
     path: 'page-404',
     component: NotFound
@@ -23,3 +25,16 @@ export const sessionRoutes: IRoute[] = [
     component: SignUp
   }
 ];
+
+export const SessionRoutes = () => (
+  <Switch>
+    {SESSION_ROUTES.map((route, index) => (
+      <Route
+        key={index}
+        exact={false}
+        path={`/session/${route.path}`}
+        component={() => <route.component />}
+      />
+    ))}
+  </Switch>
+);

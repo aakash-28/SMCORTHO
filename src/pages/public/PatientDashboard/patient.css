@@ -1,0 +1,13 @@
+.app-loader .main-content-wrap{
+    margin:0px !important; 
+}
+.calendarviewcard .calendarcard2{
+    min-width: 533px; 
+    min-height: 500px; 
+}
+.appointmentform .ant-card-head-title{
+    size:2.5rem ;   
+}
+/* .app-container{
+    padding-left: 20px !important;
+} */
