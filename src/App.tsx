@@ -1,31 +1,11 @@
 import React from 'react';
-
 import { Switch, Route, Redirect } from 'react-router-dom';
-
-import NotFound from './pages/sessions/404';
 import { sessionRoutes } from './routing/session-routes';
-
-import './App.scss';
 import { useHideLoader } from './hooks/useHideLoader';
-import SMCLayout from './layout/components/smcLayout/SMCLayout';
 import { smcRoutes } from './routing/smc-routes';
-
-const Routes = ({ routes, layout = '' }) => (
-  <Switch>
-    {routes.map((route, index) => (
-      <Route
-        key={index}
-        exact={route.exact}
-        path={layout.length > 0 ? `/${layout}/${route.path}` : `/${route.path}\``}
-        component={() => <route.component />}
-      />
-    ))}
-
-    <Route path='*'>
-      <Redirect to='/public/page-404' />
-    </Route>
-  </Switch>
-);
+import SMCLayout from './layout/components/smcLayout/SMCLayout';
+import NotFound from './pages/sessions/404';
+import './App.scss';
 
 const SMCRoutes = () => (
   <Switch>
@@ -44,7 +24,18 @@ const SMCRoutes = () => (
   </Switch>
 );
 
-const SessionRoutes = () => <Routes routes={sessionRoutes} layout='public' />;
+const ErrorRoutes = () => (
+  <Switch>
+    {sessionRoutes.map((route, index) => (
+      <Route
+        key={index}
+        exact={false}
+        path={`/public/${route.path}`}
+        component={() => <route.component />}
+      />
+    ))}
+  </Switch>
+);
 
 const App = () => {
   useHideLoader();
@@ -55,16 +46,19 @@ const App = () => {
         <Redirect to='/smc/default' />
       </Route>
 
-      <Route path='/public'>
-        <SessionRoutes />
-      </Route>
-
+      {/* All website pages */}
       <Route path='/smc'>
         <SMCLayout>
           <SMCRoutes />
         </SMCLayout>
       </Route>
 
+      {/* All error pages */}
+      <Route path='/public'>
+        <ErrorRoutes />
+      </Route>
+
+      {/* Catch-all Default */}
       <Route path='*'>
         <NotFound />
       </Route>
