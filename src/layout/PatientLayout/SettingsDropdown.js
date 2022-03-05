@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom';
 import { AccountContext } from '../../account/Account';
 
 const accountItems = [
-  { text: 'Home', icon: 'icofont-ui-home', route: '/patient/patientdashboard' },
-  { text: 'User profile', icon: 'icofont-ui-user', route: '/patient/profile' },
-  { text: 'Appointments', icon: 'icofont-ui-calendar', route: '/patient/appointmenthistory' },
-  { text: 'Update Credentials', icon: 'icofont-ui-password', route: '/patient/updatecredentials' }
+  { text: 'Home', icon: 'icofont-ui-home', route: '/public/dashboard' },
+  { text: 'User profile', icon: 'icofont-ui-user', route: '/public/profile' },
+  { text: 'Appointments', icon: 'icofont-ui-calendar', route: '/public/history' },
+  { text: 'Update Credentials', icon: 'icofont-ui-password', route: '/public/credentials' }
 ];
 const SettingsDropdown = () => {
 

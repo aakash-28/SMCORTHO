@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import BaseLayout2 from '../base2/BaseLayout2';
+import BaseLayout from '../base/BaseLayout';
 import Navbar from '../components/navbar/Navbar';
 import NavLoader from '../components/navbar/NavLoader';
 import Logo from '../components/logo/Logo';
@@ -60,9 +60,9 @@ const PatientLayout = ({ children }) => {
   );
   return (
     <>
-      <BaseLayout2 orientation='vertical' nav={nav}>
+      <BaseLayout orientation='vertical' nav={nav}>
         {children}
-      </BaseLayout2>
+      </BaseLayout>
     </>
   );
 };

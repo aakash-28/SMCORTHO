@@ -10,7 +10,7 @@ const Actions = () => (
   <div className='actions'>
     <Notifications />
     <Account>
-    <SettingsDropdown />
+        <SettingsDropdown />
     </Account>
   </div>
 );
