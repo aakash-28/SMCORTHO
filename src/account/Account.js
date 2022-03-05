@@ -40,47 +40,41 @@ const Account = (props) => {
     });
   };
     
+  const authenticate = async (Username,Password) => {
+    return await new Promise((resolve,reject)=> {
+      const user = new CognitoUser({ Username, Pool });
+      const authDetails = new AuthenticationDetails({ Username,Password})
+        user.authenticateUser(authDetails,{
+          onSuccess: (data) => {
+            console.log("onSuccess: ", data);
+            resolve(data);
+          },
+          onFailure: (err) => {
+            console.error("on Failure: ", err);
+            reject(err);
+          },
+          newPasswordRequired: (data) => {
+            console.log("newPasswordRequired: ",data);
+            resolve(data);
+          },
+        });
+    })
+  };
 
-    const authenticate = async (Username,Password) =>{
-        return await new Promise((resolve,reject)=>{
-        const user = new CognitoUser({ Username, Pool });
-        const authDetails = new AuthenticationDetails({ Username,Password})
-          user.authenticateUser(authDetails,{
-            onSuccess: (data) => {
-              console.log("onSuccess: ", data);
-              resolve(data);
-            },
-            onFailure: (err) => {
-              console.error("on Failure: ", err);
-              reject(err);
-            },
-            newPasswordRequired: (data) => {
-              console.log("newPasswordRequired: ",data);
-              resolve(data);
-            },
-          });
-        })
-    };
+  const logout = () => {
+    const user = Pool.getCurrentUser();
+    if (user) {
+      user.signOut();
+      console.log("Logout Successful")
+    }
+    console.log("Logout Function Invoked")
+  };
 
-    const logout = () => {
-        const user = Pool.getCurrentUser();
-        if (user) {
-          user.signOut();
-          console.log("Logout Successful")
-        }
-        console.log("Logout Function Invoked")
-      };
-
-
-    return(
-        
-        <AccountContext.Provider value={{authenticate,getSession,logout}}>
-                {props.children}
-        </AccountContext.Provider>
-
-
-    )
-
+  return(
+    <AccountContext.Provider value={{authenticate,getSession,logout}}>
+      {props.children}
+    </AccountContext.Provider>
+  )
 };
 
 export {Account,AccountContext};

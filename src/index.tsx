@@ -8,11 +8,14 @@ import App from './App';
 
 import * as serviceWorker from './serviceWorker';
 import { ConnectedRouter } from 'connected-react-router';
+import { Account } from './account/Account';
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      <Account>
+        <App />
+      </Account>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
