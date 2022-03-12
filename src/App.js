@@ -12,6 +12,7 @@ const App = () => {
 
   return (
     <Switch>
+      {/* Default first route */}
       <Route exact path='/'>
         <Redirect to='/public/dashboard' />
       </Route>

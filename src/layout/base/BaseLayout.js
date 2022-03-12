@@ -6,7 +6,6 @@ import Footer from '../components/footer/Footer';
 import SettingsForm from '../components/settings/SettingsForm';
 import { updateSettings, resetSettings } from '../../redux/settings/actions';
 import { fetchPatients } from '../../redux/patients/actions';
-
 import className from '../../utils/class-names';
 
 import './scss/BaseLayout.scss';

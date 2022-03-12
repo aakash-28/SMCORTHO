@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
 
-import { IInvoice, IInvoicePreview, IInvoiceRecord } from '../interfaces/invoice';
 import axios from 'axios';
 
 async function getInvoices() {
   const result = await axios.get('./data/invoices.json');
-  return result.data as IInvoicePreview[];
+  return result.data;
 }
 
-export async function getInvoiceRecords(id: number = 0) {
+export async function getInvoiceRecords(id = 0) {
   const result = await axios.get('./data/invoice.json');
-  return result.data as IInvoiceRecord[];
+  return result.data;
 }
 
-export function useGetInvoice(): IInvoice {
+export function useGetInvoice() {
   return {
     senderName: 'Forrest Ray',
     senderAddress: '191-103 Integer Rd.',
@@ -28,8 +27,8 @@ export function useGetInvoice(): IInvoice {
   };
 }
 
-export function useGetInvoices(): IInvoicePreview[] {
-  const [invoices, setInvoices] = useState<IInvoicePreview[]>([]);
+export function useGetInvoices() {
+  const [invoices, setInvoices] = useState([]);
 
   useEffect(() => {
     getInvoices().then((data) => {
