@@ -10,7 +10,7 @@ import LogoSvg from './../../assets/img/logo.png';
 import { useSearchData } from '../../hooks/useSearchData';
 import { useDispatch, useSelector } from 'react-redux';
 
-import './PatientLayout.scss';
+import './scss/PatientLayout.scss';
 
 const logoStyle = {
   height: '100px',
@@ -39,12 +39,7 @@ const PatientLayout = ({ children }) => {
   }, []);
 
   const nav = (
-    <Navbar
-      boxed={true}
-      color='#ffffff'
-      background='#ffffff'
-      orientation='horizontal'
-    >
+    <Navbar boxed={true} color='#ffffff' background='#ffffff' orientation='horizontal'>
       <button className='no-style navbar-toggle d-lg-none' onClick={onSidebarToggle}>
         <span />
         <span />

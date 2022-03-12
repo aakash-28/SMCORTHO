@@ -1,18 +1,15 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import { Modal } from 'antd';
 
 import Footer from '../components/footer/Footer';
 import SettingsForm from '../components/settings/SettingsForm';
-
 import { updateSettings, resetSettings } from '../../redux/settings/actions';
 import { fetchPatients } from '../../redux/patients/actions';
 
 import className from '../../utils/class-names';
 
-import './BaseLayout.scss';
+import './scss/BaseLayout.scss';
 
 const patientsUrl = '/data/patients.json';
 

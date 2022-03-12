@@ -13,7 +13,7 @@ const App = () => {
   return (
     <Switch>
       <Route exact path='/'>
-        <Redirect to='/smc/default' />
+        <Redirect to='/public/dashboard' />
       </Route>
 
       {/* Patient side pages */}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Account } from '../../account/Account';
 
-import './Actions.scss';
+import './scss/Actions.scss';
 
 import Notifications from './Notifications';
 import SettingsDropdown from './SettingsDropdown';
