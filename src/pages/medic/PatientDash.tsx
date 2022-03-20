@@ -69,7 +69,7 @@ const handleChange = (maxCount: number, setter: (val) => void) => (event) => {
 
 function submit(e){
   e.preventDefault()
-  Axios.post(url,{
+  Axios.put(url,{
     patientID:"SMCTest2",
     name:data.name,
     email:data.email,

@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import { HomeFilled } from '@ant-design/icons/lib';
 
 import BaseErrorPage from './BaseErrorPage';
-import { navigateHome } from '../../utils/naviagate-home';
+import { navigateLogin } from '../../utils/navigate-login';
 
 const NotFound = () => (
   <BaseErrorPage
@@ -15,7 +15,7 @@ const NotFound = () => (
     action={
       <Button
         type='primary'
-        onClick={navigateHome}
+        onClick={navigateLogin}
         style={{ width: 'auto' }}
         icon={<HomeFilled className='ml-0 mr-2' style={{ fontSize: '1em' }} />}
       >

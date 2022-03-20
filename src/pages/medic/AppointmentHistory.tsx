@@ -15,7 +15,7 @@ import {
   SendOutlined,
   SettingOutlined
 } from '@ant-design/icons';
-
+import AppointmentItem from './components/AppointmentItem';
 import { usePageData } from '../../hooks/usePage';
 import { IPageData } from '../../interfaces/page';
 
@@ -66,6 +66,7 @@ const AppointmentHistory = () => {
   return (
     <>
       <Card title=''>
+        <AppointmentItem/>
         <Timeline className='ml-3 mt-4'>
           <Timeline.Item
             dot={

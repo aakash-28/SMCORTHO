@@ -71,12 +71,21 @@ const DefaultRoutes = ({ layout }) => <Routes routes={defaultRoutes} layout={lay
 const SessionRoutes = () => <Routes routes={sessionRoutes} layout='public' />;
 
 const App = () => {
+  const {getSession} = useContext(AccountContext);
+  const [loggedin,setLoggedIn]=useState(false);  
 
+    useEffect(() =>{
+    getSession().then(()=>{
+     setLoggedIn(true);
+    
+    })
+  },[])
 
   useHideLoader();
   
     return (
-      <Account>
+    <>
+      {loggedin ? (
       <Switch>
         <Route exact path='/'>
           <Redirect to='/patient/patientdashboard' />
@@ -113,8 +122,22 @@ const App = () => {
         <Route path='*'>
           <NotFound />
         </Route>
-      </Switch>
-      </Account>
+      </Switch>)
+      :
+      (
+        <Switch>
+      <Route path='/public'>
+      <SessionRoutes />
+      </Route>
+
+      <Route path='*'>
+      <NotFound />
+      </Route>
+       </Switch>
+      )
+      }
+      </>
+      
     );
  
 };
